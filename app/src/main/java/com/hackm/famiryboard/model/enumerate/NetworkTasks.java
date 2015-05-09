@@ -7,6 +7,10 @@ public enum NetworkTasks {
     GetStampCategory(1, Request.Method.GET),
     GetStamp(2, Request.Method.GET),
     PostOrderCake(3, Request.Method.POST),
+
+	PostPicture(4, Request.Method.POST),
+	PostLogin(5, Request.Method.POST),
+	PostRegistFamiry(6, Request.Method.POST),
 	;
 	public int id;
 	//Request

@@ -12,29 +12,30 @@
     <string name="title_activity_select_stamp">スタンプを選択</string>
     <string name="title_activity_webpage"></string>
 
+    <!-- Login -->
+    <string name="login_edittext_hint_mail">ユーザーネーム</string>
+    <string name="login_edittext_hint_password">パスワード</string>
+    <string name="login_button_login">ログイン</string>
+    <string name="login_button_signup">サインアップ</string>
     <!-- Top -->
     <string name="top_button_make">ケーキを作る</string>
     <string name="top_button_collection">コレクションを選ぶ</string>
     <string name="top_text_date">最短お届け日　%1$s</string>
-
     <!-- Select Cake -->
     <string name="cake_label_plain">Plain</string>
     <string name="cake_label_choco">Chocolate</string>
     <string name="cake_size">%1$dcm×%2$dcm</string>
     <string name="cake_target">%1$s名様用</string>
     <string name="cake_price">%1$s円</string>
-
     <!-- Make Cake -->
     <string name="make_nav_quality">画像品質</string>
     <string name="make_getpic_camera">撮影する</string>
     <string name="make_getpic_gallery">カメラロール</string>
     <string name="make_attention_title">ケーキに何も描かれていません</string>
     <string name="make_attention_message">ケーキの上に写真、スタンプ、テキスト\nなどを配置して装飾してください。</string>
-
     <!-- Confilm -->
     <string name="confilm_button_cart">カートに入れる</string>
     <string name="confilm_textview_price">¥%1$s\n+送料</string>
-
     <!-- Navigation Drawer -->
     <string name="nav_drawer_info">最短お届け日</string>
     <string name="nav_menu_home">ホーム</string>
@@ -44,12 +45,15 @@
     <string name="nav_menu_question">ご利用方法</string>
     <string name="failed_network_text">通信に失敗しました。再度お試しください</string>
     <string name="faild_stamp_get">スタンプの取得に失敗しました。</string>
-
     <!-- TextDeco Dialog -->
     <string name="textdeco_edittext_hint">タップで文章編集</string>
     <string name="textdeco_buttton_positive">OK</string>
     <string name="textdeco_buttton_negative">キャンセル</string>
     <!-- Font(Text Deco) View -->
     <string name="font_textview_size">%1$dpt</string>
+    <string name="title_activity_login">LoginActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

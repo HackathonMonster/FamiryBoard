@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/make_cake_getpic_nav_height">
+    android:layout_height="@dimen/whiteboard_getpic_nav_height">
 
 
     <LinearLayout
@@ -27,8 +27,8 @@
             android:text="@string/make_getpic_camera" />
 
         <ImageView
-            android:layout_width="@dimen/make_cake_getpic_nav_icon_size"
-            android:layout_height="@dimen/make_cake_getpic_nav_icon_size"
+            android:layout_width="@dimen/whiteboard_getpic_nav_icon_size"
+            android:layout_height="@dimen/whiteboard_getpic_nav_icon_size"
             android:src="@drawable/ic_make_getpic_camera"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/element_spacing_normal" />
@@ -62,8 +62,8 @@
             android:text="@string/make_getpic_gallery" />
 
         <ImageView
-            android:layout_width="@dimen/make_cake_getpic_nav_icon_size"
-            android:layout_height="@dimen/make_cake_getpic_nav_icon_size"
+            android:layout_width="@dimen/whiteboard_getpic_nav_icon_size"
+            android:layout_height="@dimen/whiteboard_getpic_nav_icon_size"
             android:src="@drawable/ic_make_getpic_gallery"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/element_spacing_normal" />

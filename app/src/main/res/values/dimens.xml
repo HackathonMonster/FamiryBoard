@@ -18,6 +18,7 @@
     <!-- Common -->
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="element_spacing_xlarge">16dp</dimen>
     <dimen name="element_spacing_large">12dp</dimen>
     <dimen name="element_spacing_normal">8dp</dimen>
     <dimen name="element_spacing_small">4dp</dimen>
@@ -26,6 +27,87 @@
     <dimen name="view_height_small">36dp</dimen>
     <dimen name="view_height_tiny">24dp</dimen>
     <dimen name="list_item_divider_height">1dp</dimen>
+    <dimen name="view_elavation">2dp</dimen>
+
+    <!-- TODO: PageParams -->
+    <!-- Common Page -->
+    <dimen name="common_button_horizontal_margin">48dp</dimen>
+    <dimen name="common_item_next_icon_width">16dp</dimen>
+    <!-- Login Page -->
+    <dimen name="login_page_vertical_margin">48dp</dimen>
+    <dimen name="login_button_vertical_margin">48dp</dimen>
+    <dimen name="login_imageview_bottom_margin">48dp</dimen>
+    <!-- Splash -->
+    <dimen name="splash_imageview_size">160dp</dimen>
+    <dimen name="splash_imageview_top_margin">64dp</dimen>
+    <!-- Top -->
+    <dimen name="top_imageview_cake_size">216dp</dimen>
+    <dimen name="top_imageview_cake_padding">44dp</dimen><!--All:Print 12:7-->
+    <dimen name="top_cake_vertical_margin">28dp</dimen>
+    <!-- Select Cake -->
+    <dimen name="select_cake_textsize_large">14sp</dimen>
+    <dimen name="select_cake_textsize_label">12sp</dimen>
+    <dimen name="select_cake_textsize_type">10sp</dimen>
+    <dimen name="select_cake_textsize_price">18sp</dimen>
+        <!-- Cake Label -->
+        <!-- Shape -->
+        <dimen name="shape_cake_vertical_padding">4dp</dimen>
+        <dimen name="shape_cake_horizontal_padding">18dp</dimen>
+    <dimen name="select_cake_margin_vartical">4dp</dimen>
+    <dimen name="select_cake_name_margin_horizontal">4dp</dimen>
+    <dimen name="select_cake_padding_vartical">4dp</dimen>
+    <dimen name="select_cake_padding_horizontal">16dp</dimen>
+    <!-- WhiteBoard -->
+    <dimen name="whiteboard_menu_button_width">48dp</dimen>
+    <dimen name="whiteboard_menu_button_height">48dp</dimen>
+    <dimen name="whiteboard_menu_button_padding_vertical">8dp</dimen>
+    <dimen name="whiteboard_menu_button_padding_horizontal">8dp</dimen>
+    <dimen name="whiteboard_getpic_nav_height">48dp</dimen>
+    <dimen name="whiteboard_getpic_nav_icon_size">24dp</dimen>
+    <dimen name="deco_view_frame_width">2dp</dimen>
+    <!-- Confilm -->
+    <dimen name="confilm_imageview_cake_size">@dimen/top_imageview_cake_size</dimen>
+    <dimen name="confilm_imageview_cake_padding">@dimen/top_imageview_cake_padding</dimen>
+    <dimen name="confilm_imageview_badge_size">96dp</dimen>
+    <dimen name="confilm_icon_cart_size">32dp</dimen>
+    <!-- Stamp Category -->
+    <dimen name="stamp_category_thumnail_size">64dp</dimen>
+    <dimen name="stamp_category_vertical_margin">12dp</dimen>
+    <!-- Stamps -->
+    <dimen name="stamps_vertical_margin">8dp</dimen>
+    <dimen name="stamps_horizontal_margin">8dp</dimen>
+    <!-- Dialog -->
+    <dimen name="dialog_content_horizontal_margin">8dp</dimen>
+    <dimen name="dialog_content_vertical_margin">8dp</dimen>
+    <dimen name="dialog_content_vertical_top_margin">24dp</dimen>
+    <dimen name="dialog_content_vertical_bottom_margin">16dp</dimen>
+    <dimen name="dialog_button_area_height">48dp</dimen>
+    <dimen name="dialog_button_height">36dp</dimen>
+    <dimen name="dialog_button_negative_width">80dp</dimen>
+    <dimen name="dialog_button_positive_width">64dp</dimen>
+    <!-- Font(TextDeco) Edit View -->
+    <dimen name="font_vertical_margin">6dp</dimen>
+    <dimen name="font_horizontal_margin">6dp</dimen>
+    <dimen name="font_button_width">40dp</dimen>
+    <dimen name="font_button_height">40dp</dimen>
+    <dimen name="font_menu_sepalater_width">1dp</dimen>
+    <dimen name="font_menu_gravity_padding">6dp</dimen>
+    <dimen name="font_menu_gravity_horizontal_margin">12dp</dimen>
+    <dimen name="font_horizontal_padding">24dp</dimen>
+    <!-- ActionBar -->
+    <dimen name="actionbar_height">56dp</dimen>
+    <dimen name="actionbar_icon_size">24dp</dimen>
+    <dimen name="actionbar_horizontal_margin">16dp</dimen>
+    <dimen name="actionbar_vertical_margin">16dp</dimen>
+    <!-- Navdrawer -->
+    <dimen name="navigation_drawer_width">240dp</dimen>
+    <dimen name="navigation_drawer_logo_size">92dp</dimen>
+    <dimen name="navigation_drawer_logo_padding">20dp</dimen>
+    <dimen name="navigation_drawer_logo_margin_top">64dp</dimen>
+    <dimen name="navigation_drawer_menu_icon_size">24dp</dimen>
+    <dimen name="navigation_drawer_menu_vertical_padding">20dp</dimen>
+    <dimen name="navigation_drawer_menu_horizontal_padding">24dp</dimen>
+
 
     <!-- TODO: Button -->
     <!-- Shape -->
@@ -38,11 +120,13 @@
     <!-- Stroke -->
     <dimen name="button_stroke_width">2dp</dimen>
     <!-- TODO: /Button -->
-
-
+    <!-- Shape -->
+    <dimen name="stamp_stroke_width">2dp</dimen>
+    <dimen name="font_stroke_width">1dp</dimen>
     <!-- Layout Property-->
     <dimen name="card_corner_radius">2dp</dimen>
     <dimen name="card_elevation">2dp</dimen>
+
 
     <!-- Text Size -->
     <dimen name="text_size_xlarge">24sp</dimen>
@@ -62,91 +146,5 @@
     <dimen name="text_size_caption">@dimen/text_size_small</dimen>
     <dimen name="text_size_button">@dimen/text_size_medium</dimen>
 
-
-    <dimen name="content_padding_normal">16dp</dimen>
-
-    <dimen name="view_elavation">2dp</dimen>
-
-    <dimen name="actionbar_height">56dp</dimen>
-    <dimen name="actionbar_icon_size">24dp</dimen>
-    <dimen name="actionbar_horizontal_margin">16dp</dimen>
-    <dimen name="actionbar_vertical_margin">16dp</dimen>
-
-    <!-- Splash -->
-    <dimen name="splash_imageview_size">160dp</dimen>
-    <dimen name="splash_imageview_top_margin">64dp</dimen>
-
-    <!-- Top -->
-    <dimen name="top_imageview_cake_size">216dp</dimen>
-    <dimen name="top_imageview_cake_padding">44dp</dimen><!--All:Print 12:7-->
-    <dimen name="top_cake_vertical_margin">28dp</dimen>
-    <!-- Select Cake -->
-    <dimen name="select_cake_textsize_large">14sp</dimen>
-    <dimen name="select_cake_textsize_label">12sp</dimen>
-    <dimen name="select_cake_textsize_type">10sp</dimen>
-    <dimen name="select_cake_textsize_price">18sp</dimen>
-        <!-- Cake Label -->
-        <!-- Shape -->
-        <dimen name="shape_cake_vertical_padding">4dp</dimen>
-        <dimen name="shape_cake_horizontal_padding">18dp</dimen>
-    <dimen name="select_cake_margin_vartical">4dp</dimen>
-    <dimen name="select_cake_name_margin_horizontal">4dp</dimen>
-    <dimen name="select_cake_padding_vartical">4dp</dimen>
-    <dimen name="select_cake_padding_horizontal">16dp</dimen>
-    <!-- Make Cake -->
-    <dimen name="make_cake_menu_button_width">48dp</dimen>
-    <dimen name="make_cake_menu_button_height">48dp</dimen>
-    <dimen name="make_cake_menu_button_padding_vertical">8dp</dimen>
-    <dimen name="make_cake_menu_button_padding_horizontal">8dp</dimen>
-    <dimen name="make_cake_getpic_nav_height">48dp</dimen>
-    <dimen name="make_cake_getpic_nav_icon_size">24dp</dimen>
-    <dimen name="deco_view_frame_width">2dp</dimen>
-
-    <!-- Confilm -->
-    <dimen name="confilm_imageview_cake_size">@dimen/top_imageview_cake_size</dimen>
-    <dimen name="confilm_imageview_cake_padding">@dimen/top_imageview_cake_padding</dimen>
-    <dimen name="confilm_imageview_badge_size">96dp</dimen>
-    <dimen name="confilm_icon_cart_size">32dp</dimen>
-
-    <!-- Navdrawer -->
-    <dimen name="navigation_drawer_width">240dp</dimen>
-    <dimen name="navigation_drawer_logo_size">92dp</dimen>
-    <dimen name="navigation_drawer_logo_padding">20dp</dimen>
-    <dimen name="navigation_drawer_logo_margin_top">64dp</dimen>
-    <dimen name="navigation_drawer_menu_icon_size">24dp</dimen>
-    <dimen name="navigation_drawer_menu_vertical_padding">20dp</dimen>
-    <dimen name="navigation_drawer_menu_horizontal_padding">24dp</dimen>
-
-    <!-- Stamp Category -->
-    <dimen name="stamp_category_thumnail_size">64dp</dimen>
-    <dimen name="stamp_category_vertical_margin">12dp</dimen>
-
-    <!-- Stamps -->
-    <dimen name="stamps_vertical_margin">8dp</dimen>
-    <dimen name="stamps_horizontal_margin">8dp</dimen>
-
-    <!-- Shape -->
-    <dimen name="stamp_stroke_width">2dp</dimen>
-    <dimen name="font_stroke_width">1dp</dimen>
-
-    <!-- Dialog -->
-    <dimen name="dialog_content_horizontal_margin">8dp</dimen>
-    <dimen name="dialog_content_vertical_margin">8dp</dimen>
-    <dimen name="dialog_content_vertical_top_margin">24dp</dimen>
-    <dimen name="dialog_content_vertical_bottom_margin">16dp</dimen>
-    <dimen name="dialog_button_area_height">48dp</dimen>
-    <dimen name="dialog_button_height">36dp</dimen>
-    <dimen name="dialog_button_negative_width">80dp</dimen>
-    <dimen name="dialog_button_positive_width">64dp</dimen>
-
-    <!-- Font(TextDeco) Edit View -->
-    <dimen name="font_vertical_margin">6dp</dimen>
-    <dimen name="font_horizontal_margin">6dp</dimen>
-    <dimen name="font_button_width">40dp</dimen>
-    <dimen name="font_button_height">40dp</dimen>
-    <dimen name="font_menu_sepalater_width">1dp</dimen>
-    <dimen name="font_menu_gravity_padding">6dp</dimen>
-    <dimen name="font_menu_gravity_horizontal_margin">12dp</dimen>
-    <dimen name="font_horizontal_padding">24dp</dimen>
 
 </resources>

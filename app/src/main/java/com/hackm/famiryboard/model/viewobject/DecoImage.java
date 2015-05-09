@@ -7,8 +7,11 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.Log;
 
+import com.google.gson.JsonElement;
 import com.hackm.famiryboard.model.system.AppConfig;
 import com.hackm.famiryboard.view.widget.WhiteBoardView;
+
+import org.json.JSONObject;
 
 
 /**
@@ -23,13 +26,18 @@ public class DecoImage extends Deco {
         this.imageUrl = imageUrl;
     }
 
-    @Override
-    public String encodeToSvg() {
-        return null;
-    }
-
-    @Override
-    public Deco decoveBySvg(String svgData) {
-        return null;
+    /**
+     * No Create Bitmap
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @param rotation
+     * @param type
+     * @param imageUrl
+     */
+    public DecoImage(float x, float y, float width, float height, int rotation, int type, String imageUrl) {
+        super(x, y, width, height, rotation, type);
+        this.imageUrl = imageUrl;
     }
 }

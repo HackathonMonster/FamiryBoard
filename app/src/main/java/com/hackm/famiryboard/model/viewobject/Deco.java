@@ -1,5 +1,6 @@
 package com.hackm.famiryboard.model.viewobject;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -9,23 +10,26 @@ import android.util.Log;
 
 import com.hackm.famiryboard.model.system.AppConfig;
 import com.hackm.famiryboard.view.widget.WhiteBoardView;
+import com.squareup.picasso.Target;
 
 
 /**
  * Created by shunhosaka on 2014/12/27.
  */
-public abstract class Deco {
+public class Deco {
     public static final int TYPE_CAMERA = 0;
     public static final int TYPE_GALLERY = 1;
     public static final int TYPE_STAMP = 1;
     public static final int TYPE_TEXT = 2;
 
-    private Paint paint = null;
     public float x, y;
     public float width, height;
     public int rotation;
-    public Bitmap bitmap;
     public int type = TYPE_CAMERA;
+
+    //Jsonにするときに無視する
+    public transient Bitmap bitmap;
+    private transient Paint paint = null;
 
     public Deco(Bitmap bitmap, float x, float y, float width, float height, int rotation, int type) {
         this.bitmap = bitmap;
@@ -35,12 +39,21 @@ public abstract class Deco {
         this.height = height;
         this.rotation = rotation;
         this.type = type;
-
         if(AppConfig.DEBUG) {
             Log.d("Deco", "Constructor Value:" + "(x:" + Float.toString(x) + ", y:" + Float.toString(y) + ")");
             Log.d("Deco", "Constructor Value:" + "(width:" + Float.toString(width) + ", height:" + Float.toString(height) + ")");
             Log.d("Deco", "Constructor Value:" + "(rotation:" + Integer.toString(rotation) + ")");
         }
+    }
+
+    // Non Bitmap Type
+    public Deco(float x, float y, float width, float height, int rotation, int type) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.rotation = rotation;
+        this.type = type;
     }
 
     /**
@@ -166,7 +179,4 @@ public abstract class Deco {
         }
         return cnt == 4 || cnt == -4;
     }
-
-    public abstract String encodeToSvg();
-    public abstract Deco decoveBySvg(String svgData);
 }

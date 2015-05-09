@@ -1,0 +1,83 @@
+<view xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_layout_progress"
+    class="android.support.v4.widget.SwipeRefreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary"
+        android:paddingBottom="@dimen/login_page_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/login_page_vertical_margin"
+        tools:context="com.zeroone_creative.basicapplication.view.activity.LoginActivity">
+
+        <LinearLayout
+            android:id="@+id/login_linearlayout_center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/element_spacing_normal"
+            android:layout_marginRight="@dimen/element_spacing_normal">
+
+            <EditText
+                android:id="@+id/login_edittext_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="@color/login_edittext_backgroundtint"
+                android:backgroundTintMode="src_in"
+                android:ems="10"
+                android:hint="@string/login_edittext_hint_mail"
+                android:inputType="textEmailAddress"
+                android:minLines="1"
+                android:textColor="@color/primary_text_inverse"
+                android:textColorHint="@color/secondary_text_inverse" />
+
+            <EditText
+                android:id="@+id/login_edittext_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/element_spacing_large"
+                android:backgroundTint="@color/login_edittext_backgroundtint"
+                android:backgroundTintMode="src_in"
+                android:ems="10"
+                android:hint="@string/login_edittext_hint_password"
+                android:inputType="textPassword"
+                android:minLines="1"
+                android:textColor="@color/primary_text_inverse"
+                android:textColorHint="@color/secondary_text_inverse" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/login_imageview_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/login_linearlayout_center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/login_imageview_bottom_margin"
+            android:src="@drawable/ic_launcher" />
+
+        <Button
+            android:id="@+id/login_button_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_linearlayout_center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/common_button_horizontal_margin"
+            android:layout_marginRight="@dimen/common_button_horizontal_margin"
+            android:layout_marginTop="@dimen/login_button_vertical_margin"
+            android:background="@drawable/bg_button_accent"
+            android:text="@string/login_button_login"
+            android:textColor="@color/primary_text_inverse" />
+
+    </RelativeLayout>
+
+</view>
+
+

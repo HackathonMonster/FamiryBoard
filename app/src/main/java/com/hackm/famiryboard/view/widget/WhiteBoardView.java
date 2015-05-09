@@ -75,10 +75,10 @@ public class WhiteBoardView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        for(Deco deco : mDecos) {
+        for (Deco deco : mDecos) {
             deco.draw(canvas);
         }
-        if(mFocusObjectIndex >= 0 && mFocusObjectIndex < mDecos.size()) {
+        if (mFocusObjectIndex >= 0 && mFocusObjectIndex < mDecos.size()) {
             drawFrame(canvas, mDecos.get(mFocusObjectIndex));
         }
     }
@@ -115,10 +115,10 @@ public class WhiteBoardView extends View {
                 break;
             case MotionEvent.ACTION_UP:
                 //Log.d("CakeDecoView", "judgeTouchPoint touchType:"+Integer.toString(mTouchType));
-                if(mTouchType == TYPE_DELETE) {
+                if (mTouchType == TYPE_DELETE) {
                     try {
                         Deco focusDeco = mDecos.get(mFocusObjectIndex);
-                        if( focusDeco.getTouchType(touchPoint) == TYPE_DELETE ) {
+                        if (focusDeco.getTouchType(touchPoint) == TYPE_DELETE) {
                             mDecos.remove(mFocusObjectIndex);
                         }
                     } catch (ArrayIndexOutOfBoundsException e) {
@@ -147,41 +147,43 @@ public class WhiteBoardView extends View {
 
     /**
      * Add new Deco Item
+     *
      * @param bitmap
      */
-    public void addDecoImageItem(Bitmap bitmap, String imageUrl,int type) {
+    public DecoImage addDecoImageItem(Bitmap bitmap, String imageUrl, int type) {
         float scale = 1.0f;
-        if(Math.max(bitmap.getWidth(), bitmap.getHeight()) > 0) {
+        if (Math.max(bitmap.getWidth(), bitmap.getHeight()) > 0) {
             scale = (float) Math.max(getWidth() / 2, getHeight() / 2) / (float) Math.max(bitmap.getWidth(), bitmap.getHeight());
         }
         if (AppConfig.DEBUG) {
             Log.d(getClass().getSimpleName(), "AddDecoItem" + Float.toString(scale));
         }
-        //TODO Add imageUrl
-        this.addDecoItem(new DecoImage(bitmap, getWidth() / 2, getHeight() / 2, bitmap.getWidth() * scale, bitmap.getHeight() * scale, 0, type, imageUrl));
+        return (DecoImage) this.addDecoItem(new DecoImage(bitmap, getWidth() / 2, getHeight() / 2, bitmap.getWidth() * scale, bitmap.getHeight() * scale, 0, type, imageUrl));
     }
 
     /**
      * Add new Deco Item
+     *
      * @param bitmap
      */
-    public void addDecoTextItem(Bitmap bitmap, int type, FontStyles fontStyles) {
-        this.addDecoItem(new DecoText(bitmap, getWidth() / 2, getHeight() / 2, bitmap.getWidth(), bitmap.getHeight(), 0, type, fontStyles));
+    public DecoText addDecoTextItem(Bitmap bitmap, int type, FontStyles fontStyles) {
+        return (DecoText) this.addDecoItem(new DecoText(bitmap, getWidth() / 2, getHeight() / 2, bitmap.getWidth(), bitmap.getHeight(), 0, type, fontStyles));
     }
 
     /**
      * Add new Deco Item
      * @param deco
      */
-    public void addDecoItem(Deco deco) {
+    public Deco addDecoItem(Deco deco) {
         if (mDecos != null) {
             mDecos.add(deco);
         }
         //Update
         invalidate();
+        return deco;
     }
 
-    public void replaceDecoItem(Bitmap bitmap, int type, FontStyles fontStyles, int index) {
+    public DecoText replaceDecoItem(Bitmap bitmap, int type, FontStyles fontStyles, int index) {
         DecoText decoText = null;
         try {
             decoText = (DecoText) mDecos.get(index);
@@ -190,17 +192,19 @@ public class WhiteBoardView extends View {
             mDecos.set(index, decoText);
         } catch (ArrayIndexOutOfBoundsException e) {
             addDecoTextItem(bitmap, type, fontStyles);
-            return;
+            return null;
         } catch (ClassCastException e) {
             addDecoTextItem(bitmap, type, fontStyles);
-            return;
+            return null;
         }
         //Update
         invalidate();
+        return decoText;
     }
 
     /**
      * Set mTouchType and mFocusObjectIndex
+     *
      * @param touch
      */
     private void judgeTouchPoint(Point touch) {
@@ -233,14 +237,13 @@ public class WhiteBoardView extends View {
 
     /**
      * ビューの周りの灰色のフレームを描画するクラス
-     *
      */
     private void drawFrame(Canvas canvas, Deco deco) {
         Point[] points = deco.getRectPoints();
-        for(int i=0; i<points.length; i++) {
-            canvas.drawLine(points[i].x, points[i].y, points[(i+1)%points.length].x, points[(i+1)%points.length].y, mFramePaint);
+        for (int i = 0; i < points.length; i++) {
+            canvas.drawLine(points[i].x, points[i].y, points[(i + 1) % points.length].x, points[(i + 1) % points.length].y, mFramePaint);
         }
-        float halfImageSize = MENU_BUTTON_SIZE/2;
+        float halfImageSize = MENU_BUTTON_SIZE / 2;
 
         Paint paint = new Paint();
         Matrix deleteMatrix = new Matrix();

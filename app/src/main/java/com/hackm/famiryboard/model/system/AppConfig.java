@@ -5,6 +5,7 @@ public class AppConfig {
 	private AppConfig(){
 		//restrict instantiation
 	}
+
 	//デバッグ常態化どうかのフラグ
 	public static final boolean DEBUG = true;
 	public static final boolean REAL_DEVICE = true;
@@ -31,7 +32,7 @@ public class AppConfig {
     public static final String TAG_MESSAGE_DIALOG = "tag_message_dialog";
     public static final String TAG_WEBPAGE_FRAGMENT = "tag_webpage_fragment";
 
-    public static final String DOMAIN_NAME = "";
+    public static final String DOMAIN_NAME = "carnation.azurewebsites.net";
     public static final String PAGE_COLLECTION = "";
     public static final String PAGE_CART = "";
     public static final String PAGE_CONTACT = "";

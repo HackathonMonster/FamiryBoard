@@ -12,20 +12,20 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
+        android:name=".FamiryBoardApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Custom"
-        android:name="com.hackm.famiryboard.FamiryBoardApplication"
-        android:largeHeap="true">
-
-        <meta-data android:name="com.google.android.gms.version"
+        android:largeHeap="true"
+        android:theme="@style/Theme.Custom" >
+        <meta-data
+            android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <activity
             android:name=".view.activity.MainActivity_"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".view.activity.SplashActivity_"
@@ -33,6 +33,7 @@
             android:launchMode="singleTask" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -43,14 +44,14 @@
         <activity
             android:name=".view.activity.WhiteBoardActivity_"
             android:label="@string/title_activity_make_cake"
-            android:windowSoftInputMode="adjustResize"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
             android:name=".view.activity.ConfilmActivity_"
             android:label="@string/title_activity_confilm"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".view.activity.SelectStampCategoryActivity_"
@@ -63,6 +64,10 @@
         <activity
             android:name=".view.activity.WebpageActivity_"
             android:label="@string/title_activity_webpage" >
+        </activity>
+        <activity
+            android:name=".view.activity.LoginActivity"
+            android:label="@string/title_activity_login" >
         </activity>
     </application>
 

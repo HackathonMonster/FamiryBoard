@@ -18,6 +18,31 @@ public class UriUtil {
         return builder;
     }
 
+    static public String getSignalrUrl() {
+        Uri.Builder builder = getBaseUri();
+        builder.path("/");
+        return builder.build().toString();
+    }
+
+    //TODO
+    static public String postImageUrl() {
+        Uri.Builder builder = getBaseUri();
+        builder.path("/postimage");
+        return builder.build().toString();
+    }
+
+    static public String postLoginUrl() {
+        Uri.Builder builder = getBaseUri();
+        builder.path("/token");
+        return builder.build().toString();
+    }
+
+    static public String postRegistUrl() {
+        Uri.Builder builder = getBaseUri();
+        builder.path("/api/Account/Register");
+        return builder.build().toString();
+    }
+
     static public String orderCakeUri() {
         Uri.Builder builder = getBaseUri();
         builder.path("/user_data/api.php");
@@ -26,15 +51,17 @@ public class UriUtil {
     }
 
     static public String getStampCategoryUri() {
-        Uri.Builder builder = getBaseUri();
-        //叩く先のAPI
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("http");
+        builder.encodedAuthority("www.pictcake.jp");
         builder.path("/api/stamps/categories.json");
         return builder.build().toString();
     }
 
     static public String getStampUri(String categoryId) {
-        Uri.Builder builder = getBaseUri();
-        //叩く先のAPI
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("http");
+        builder.encodedAuthority("www.pictcake.jp");
         builder.path("/api/stamps/"+categoryId+".json");
         return builder.build().toString();
     }
