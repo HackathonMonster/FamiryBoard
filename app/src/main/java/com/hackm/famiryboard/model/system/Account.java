@@ -22,6 +22,7 @@ public class Account {
     public String token_type;
     public String expires_in;
     public String userName;
+    public String password;
 
     /**
      * Load Data from Preferences
@@ -55,6 +56,12 @@ public class Account {
         this.token_type = token_type;
         this.expires_in = expires_in;
         this.userName = userName;
+    }
+
+    public static void updateToken(String access_token, Context context) {
+        Account account = Account.getAccount(context);
+        account.access_token = access_token;
+        account.saveAccount(context);
     }
 
     /**

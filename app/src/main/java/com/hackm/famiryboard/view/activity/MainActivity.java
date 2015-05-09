@@ -32,59 +32,20 @@ import java.util.Date;
 @EActivity(R.layout.activity_main)
 public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment_.OnDrawerSelectedListener{
 
-    @Extra("irregular_shipping_begin")
-    String mIrregularShippingBegin;
-    @Extra("irregular_shipping_end")
-    String mIrregularShippingEnd;
-
     private Calendar mDeliveryDay;
 
-    @ViewById(R.id.main_imageview_logo)
-    ImageView mLogoImageView;
     @ViewById(R.id.toolbar_actionbar)
     Toolbar mActionBarToolbar;
     @ViewById(R.id.main_drawer_layout)
     DrawerLayout mDrawerLayout;
     private NavigationDrawerFragment_  mNavigationDrawerFragment;
 
-    @AfterInject
-    void onAfterInject() {
-        setDeliveryDay();
-    }
-
     @AfterViews
     void onAfterViews() {
         mNavigationDrawerFragment = (NavigationDrawerFragment_) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mNavigationDrawerFragment.setDeliveryDate(Integer.toString(mDeliveryDay.get(Calendar.YEAR)), getDeliveryDay(true));
 
         setActionBarToolbar();
         onDrawerSelected(DrawerMenu.Home);
-    }
-
-    private void setDeliveryDay() {
-        //今日の日付を取得
-        mDeliveryDay = Calendar.getInstance();
-        mDeliveryDay.setTime(new Date());
-        if (mDeliveryDay.get(Calendar.HOUR_OF_DAY) > 18) {
-            mDeliveryDay.add(Calendar.DATE, 1);
-        }
-        if (mIrregularShippingBegin != null && mIrregularShippingEnd != null) {
-            String dataFormat = "yyyy-MM-dd'T'HH:mm:ss";
-            SimpleDateFormat format = new SimpleDateFormat(dataFormat);
-            try {
-                Calendar irregularDateBegin = Calendar.getInstance();
-                irregularDateBegin.setTime(format.parse(mIrregularShippingBegin.substring(0, dataFormat.length())));
-                Calendar irregularDateEnd = Calendar.getInstance();
-                irregularDateEnd.setTime(format.parse(mIrregularShippingEnd.substring(0, dataFormat.length())));
-                if (mDeliveryDay.compareTo(irregularDateBegin) > 0 && mDeliveryDay.compareTo(irregularDateEnd) < 0) {
-                    // イレギュラーな日付の最後を設定する
-                    mDeliveryDay = irregularDateEnd;
-                }
-            } catch (ParseException e) {
-                //何もせずに終了
-            }
-        }
-        mDeliveryDay.add(Calendar.DATE, 2);
     }
 
     private void setFragment(DrawerMenu drawerMenu) {
@@ -93,7 +54,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             if (false) {
                 getSupportFragmentManager().popBackStack(drawerMenu.name(), 0);
             } else {
-                Fragment fragment = TopFragment_.builder().mDeliveryDay(getDeliveryDay(false)).build();
+                Fragment fragment = TopFragment_.builder().build();
                 transaction.replace(R.id.main_layout_content, fragment);
                 transaction.commit();
             }
@@ -139,12 +100,10 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             //Set ActionBar
             mActionBarToolbar.setBackgroundColor(Color.TRANSPARENT);
             mActionBarToolbar.setNavigationIcon(R.drawable.ic_toolbar_menu);
-            mLogoImageView.setImageResource(R.drawable.img_toolbar_logo);
         } else {
             //Set ActionBar
             mActionBarToolbar.setBackgroundColor(getResources().getColor(R.color.actionbar_background));
             mActionBarToolbar.setNavigationIcon(R.drawable.ic_toolbar_menu_web);
-            mLogoImageView.setImageResource(R.drawable.img_toolbar_logo_web);
         }
         if (mDrawerLayout.isShown()) {
             mDrawerLayout.closeDrawer(Gravity.START);

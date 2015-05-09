@@ -5,12 +5,20 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.hackm.famiryboard.model.system.Account;
 import com.hackm.famiryboard.model.system.AppConfig;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import microsoft.aspnet.signalr.client.Action;
+import microsoft.aspnet.signalr.client.Credentials;
 import microsoft.aspnet.signalr.client.ErrorCallback;
 import microsoft.aspnet.signalr.client.LogLevel;
 import microsoft.aspnet.signalr.client.Logger;
+import microsoft.aspnet.signalr.client.http.BasicAuthenticationCredentials;
+import microsoft.aspnet.signalr.client.http.CookieCredentials;
+import microsoft.aspnet.signalr.client.http.Request;
 import microsoft.aspnet.signalr.client.hubs.HubConnection;
 import microsoft.aspnet.signalr.client.hubs.HubProxy;
 
@@ -53,6 +61,13 @@ public class SignalRFragment extends Fragment {
         String connectionUrl = args.getString(EXTRA_CONNECTION_URL);
         // Connect to the server
         mConnection = new HubConnection(connectionUrl, "", true, logger);
+        Account account = Account.getAccount(getActivity());
+        Map<String, String> authorizationHeader = account.getAccountHeader();
+        CookieCredentials credentials = new CookieCredentials();
+        for (String key : authorizationHeader.keySet()) {
+            credentials.addCookie(key, authorizationHeader.get(key));
+        }
+        mConnection.setCredentials(credentials);
         // Create the hub proxy
         mProxy = mConnection.createHubProxy(proxyName);
         setSubscribe();

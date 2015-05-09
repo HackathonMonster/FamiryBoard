@@ -108,7 +108,6 @@
     <dimen name="navigation_drawer_menu_vertical_padding">20dp</dimen>
     <dimen name="navigation_drawer_menu_horizontal_padding">24dp</dimen>
 
-
     <!-- TODO: Button -->
     <!-- Shape -->
     <dimen name="button_radius">2dp</dimen>

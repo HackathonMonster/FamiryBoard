@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">FamiryBoard</string>
     <string name="title_activity_main">@string/app_name</string>
     <string name="title_activity_drawer">@string/app_name</string>
@@ -11,14 +10,25 @@
     <string name="title_activity_select_stamp_category">スタンプを選択</string>
     <string name="title_activity_select_stamp">スタンプを選択</string>
     <string name="title_activity_webpage"></string>
+    <string name="title_activity_login">ログイン</string>
+    <string name="title_activity_regist">新規登録</string>
 
+    <!-- Start -->
+    <string name="start_button_login">招待されている人</string>
+    <string name="start_button_regist">新規で登録</string>
     <!-- Login -->
     <string name="login_edittext_hint_mail">ユーザーネーム</string>
     <string name="login_edittext_hint_password">パスワード</string>
     <string name="login_button_login">ログイン</string>
-    <string name="login_button_signup">サインアップ</string>
+    <!-- Regist -->
+    <string name="regist_edittext_hint_name">お名前</string>
+    <string name="regist_edittext_hint_mail">メールアドレス</string>
+    <string name="regist_edittext_hint_password">パスワード</string>
+    <string name="regist_edittext_hint_password_confilm">パスワードの確認</string>
+    <string name="regist_edittext_hint_birthday">誕生日</string>
+    <string name="regist_button_signup">登録する</string>
     <!-- Top -->
-    <string name="top_button_make">ケーキを作る</string>
+    <string name="top_button_make">ボード一覧</string>
     <string name="top_button_collection">コレクションを選ぶ</string>
     <string name="top_text_date">最短お届け日　%1$s</string>
     <!-- Select Cake -->
@@ -31,8 +41,8 @@
     <string name="make_nav_quality">画像品質</string>
     <string name="make_getpic_camera">撮影する</string>
     <string name="make_getpic_gallery">カメラロール</string>
-    <string name="make_attention_title">ケーキに何も描かれていません</string>
-    <string name="make_attention_message">ケーキの上に写真、スタンプ、テキスト\nなどを配置して装飾してください。</string>
+    <string name="make_attention_title">ボードに何も描かれていません</string>
+    <string name="make_attention_message">ボードの上に写真、スタンプ、テキスト\nなどを配置して装飾してみてください。</string>
     <!-- Confilm -->
     <string name="confilm_button_cart">カートに入れる</string>
     <string name="confilm_textview_price">¥%1$s\n+送料</string>
@@ -51,9 +61,10 @@
     <string name="textdeco_buttton_negative">キャンセル</string>
     <!-- Font(Text Deco) View -->
     <string name="font_textview_size">%1$dpt</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_start">StartActivity</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
 
 </resources>

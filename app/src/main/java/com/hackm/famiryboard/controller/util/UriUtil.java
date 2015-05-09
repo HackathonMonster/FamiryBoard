@@ -66,11 +66,4 @@ public class UriUtil {
         return builder.build().toString();
     }
 
-    static public String getDeliveryDayUri() {
-        Uri.Builder builder = getBaseUri();
-        //叩く先のAPI
-        builder.path("/api/delivery.json");
-        return builder.build().toString();
-    }
-
 }

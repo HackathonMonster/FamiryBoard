@@ -8,7 +8,6 @@ import com.hackm.famiryboard.model.system.AppConfig;
  */
 public enum DrawerMenu {
     Home(0, R.drawable.ic_menu_home, R.string.nav_menu_home, null),
-    Cart(1, R.drawable.ic_menu_cart, R.string.nav_menu_cart, AppConfig.PAGE_CART),
     Inquiry(2, R.drawable.ic_menu_mail, R.string.nav_menu_mail, AppConfig.PAGE_CONTACT),
     Mypage(3, R.drawable.ic_menu_user, R.string.nav_menu_user, AppConfig.PAGE_MYPAGE),
     Question(4, R.drawable.ic_menu_question, R.string.nav_menu_question, AppConfig.PAGE_QUESTION)

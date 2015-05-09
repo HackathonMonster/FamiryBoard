@@ -66,8 +66,16 @@
             android:label="@string/title_activity_webpage" >
         </activity>
         <activity
-            android:name=".view.activity.LoginActivity"
+            android:name=".view.activity.LoginActivity_"
             android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".view.activity.RegistActivity_"
+            android:label="@string/title_activity_regist" >
+        </activity>
+        <activity
+            android:name=".view.activity.StartActivity_"
+            android:label="@string/title_activity_start" >
         </activity>
     </application>
 

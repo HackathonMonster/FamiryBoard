@@ -3,13 +3,17 @@ package com.hackm.famiryboard.view.fragment;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.hackm.famiryboard.model.enumerate.DrawerMenu;
 import com.hackm.famiryboard.view.adapter.DrawerMenuAdapter;
 import com.hackm.famiryboard.R;
+import com.squareup.picasso.Picasso;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
@@ -18,12 +22,17 @@ import org.androidannotations.annotations.ViewById;
 @EFragment(R.layout.fragment_navigation_drawer)
 public class NavigationDrawerFragment extends Fragment implements AdapterView.OnItemClickListener {
 
+    private static final float PHOTO_ASPECT_RATIO = 1.7777777f;
+
+    @ViewById(R.id.drawer_layout_head)
+    FrameLayout mHeadLayout;
+    @ViewById(R.id.drawer_imageview_mood)
+    ImageView mMoodImageView;
+    @ViewById(R.id.drawer_imageview_icon)
+    ImageView mIconImageView;
+
     @ViewById(R.id.drawer_listview_menu)
     ListView mMenuListView;
-    @ViewById(R.id.drawer_textview_delivery_year)
-    TextView mDeliveryYearTextView;
-    @ViewById(R.id.drawer_textview_delivery_day)
-    TextView mDeliveryDayTextView;
 
     private DrawerMenuAdapter mAdapter;
     private OnDrawerSelectedListener mListener;
@@ -31,6 +40,12 @@ public class NavigationDrawerFragment extends Fragment implements AdapterView.On
     @AfterViews
     void onAfterViews() {
         setMenu();
+        ViewGroup.LayoutParams lp;
+        lp = mHeadLayout.getLayoutParams();
+        lp.height = (int) (getActivity().getResources().getDimensionPixelSize(R.dimen.navigation_drawer_width) / PHOTO_ASPECT_RATIO);
+        mHeadLayout.setLayoutParams(lp);
+
+        Picasso.with(getActivity()).load("https://dl.dropboxusercontent.com/u/31455721/mother.jpg").into(mMoodImageView);
     }
 
     private void setMenu() {
@@ -45,8 +60,6 @@ public class NavigationDrawerFragment extends Fragment implements AdapterView.On
             if (mListener == null) return;
             if(position == DrawerMenu.Home.id) {
                 mListener.onDrawerSelected(DrawerMenu.Home);
-            } else if (position == DrawerMenu.Cart.id) {
-                mListener.onDrawerSelected(DrawerMenu.Cart);
             } else if (position == DrawerMenu.Inquiry.id) {
                 mListener.onDrawerSelected(DrawerMenu.Inquiry);
             } else if (position == DrawerMenu.Mypage.id) {
@@ -65,11 +78,6 @@ public class NavigationDrawerFragment extends Fragment implements AdapterView.On
         } catch (ClassCastException e) {
             mListener = null;
         }
-    }
-
-    public void setDeliveryDate(String year, String date) {
-        mDeliveryYearTextView.setText(year);
-        mDeliveryDayTextView.setText(date);
     }
 
     public interface OnDrawerSelectedListener {

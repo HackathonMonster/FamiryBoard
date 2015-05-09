@@ -29,7 +29,8 @@
                 android:adjustViewBounds="true"
                 android:alpha="0.9"
                 android:scaleType="centerCrop"
-                android:src="@drawable/img_make_frame_plain" />
+                android:src="@drawable/img_make_frame_plain"
+                android:visibility="gone" />
 
         </FrameLayout>
 

@@ -135,7 +135,6 @@ public class ConfilmActivity extends ActionBarActivity {
         OrderCakeRequestUtil cakeOrderRequest = new OrderCakeRequestUtil(new NetworkTaskCallback() {
             @Override
             public void onSuccessNetworkTask(int taskId, Object object) {
-                WebpageActivity_.intent(mContext).mPageUrl(DrawerMenu.Cart.url).start();
             }
             @Override
             public void onFailedNetworkTask(int taskId, Object object) {

@@ -2,22 +2,26 @@
 <!-- App Color -->
 <resources>
     <!-- Primary -->
-    <color name="primary">#1181cf</color>
-    <color name="primary_dark">#38454c</color>
-    <color name="primary_light">#3ebcf6</color>
+    <color name="primary">#ffbb33</color>
+    <color name="primary_dark">#f57c00</color>
+    <color name="primary_light">#ffeb30</color>
     <!-- Primary Action Color -->
-    <color name="primary_button_normal">#3c7bda</color>
-    <color name="primary_button_action_disable">#883c7bda</color>
-    <color name="primary_button_action_pressed">#2b6ac9</color>
+    <color name="primary_button_normal">#ffbb33</color>
+    <color name="primary_button_action_disable">#88ffbb33</color>
+    <color name="primary_button_action_pressed">#eeaa22</color>
     <!-- Accent...secondary...thirdry -->
-    <color name="accent">#3ebbf6</color>
-    <color name="accent_orange">#f94f33</color>
+    <color name="accent">#33b5e5</color>
+    <color name="accent_action_disable">#8833b5e5</color>
+    <color name="accent_action_pressed">#22a4d4</color>
+
+    <color name="accent_blue">#0099cc</color>
     <color name="accent_choco">#724b26</color>
     <color name="accent_gray">#dcdddd</color>
 
-    <!-- Accent Action Color -->
-    <color name="accent_action_disable">#883ebbf6</color>
-    <color name="accent_action_pressed">#2daae5</color>
+    <!-- Ghost Button Color -->
+    <color name="ghost_normal">#ffffff</color>
+    <color name="ghost_pressed">#6fff</color>
+    <color name="ghost_disable">#44b6b6b6</color>
 
     <!-- Text -->
     <color name="primary_text">#de000000</color>
@@ -52,13 +56,13 @@
     <color name="font_menu_back_true">#262626</color>
     <!-- Navdrawer -->
     <color name="navdrawer_background">#535353</color>
-    <color name="navdrawer_text_color">@color/primary_text</color>
+    <color name="navdrawer_text_color">@color/primary_text_inverse</color>
     <color name="navdrawer_text_color_selected">@color/primary</color>
     <color name="navdrawer_icon_tint">#888</color>
     <color name="navdrawer_icon_tint_selected">@color/primary</color>
 
     <color name="refresh_progress_1">@color/primary</color>
     <color name="refresh_progress_2">@color/accent</color>
-    <color name="refresh_progress_3">@color/accent_orange</color>
+    <color name="refresh_progress_3">@color/accent_blue</color>
 
 </resources>

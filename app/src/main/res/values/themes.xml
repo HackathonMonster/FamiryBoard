@@ -41,7 +41,7 @@
         -->
 
         <!-- Set AllScreen Background Color -->
-        <item name="android:windowBackground">@color/screen_background</item>
+        <item name="android:windowBackground">@drawable/img_bg_wood</item>
 
     </style>
 </resources>
