@@ -1,0 +1,109 @@
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/make_swiperefreshlayout_progress"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.zeroone_creative.pictcake.view.activity.MakeCakeActivity">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <view
+                android:id="@+id/make_cakedecoview"
+                class="com.hackm.famiryboard.view.widget.WhiteBoardView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white" />
+
+            <ImageView
+                android:id="@+id/make_imageview_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:alpha="0.9"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_make_frame_plain" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/make_layout_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/whiteboard_footer"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="invisible"/>
+
+            <ImageButton
+                android:id="@+id/make_imagebutton_camera"
+                android:layout_width="@dimen/make_cake_menu_button_width"
+                android:layout_height="@dimen/make_cake_menu_button_height"
+                android:layout_marginBottom="@dimen/make_cake_menu_button_padding_vertical"
+                android:layout_marginLeft="@dimen/make_cake_menu_button_padding_horizontal"
+                android:layout_marginRight="@dimen/make_cake_menu_button_padding_horizontal"
+                android:layout_marginTop="@dimen/make_cake_menu_button_padding_vertical"
+                android:background="#0fff"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_make_camera_false" />
+
+            <ImageButton
+                android:id="@+id/make_imagebutton_stamp"
+                android:layout_width="@dimen/make_cake_menu_button_width"
+                android:layout_height="@dimen/make_cake_menu_button_height"
+                android:layout_marginBottom="@dimen/make_cake_menu_button_padding_vertical"
+                android:layout_marginLeft="@dimen/make_cake_menu_button_padding_horizontal"
+                android:layout_marginRight="@dimen/make_cake_menu_button_padding_horizontal"
+                android:layout_marginTop="@dimen/make_cake_menu_button_padding_vertical"
+                android:background="#0fff"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_make_stamp_false" />
+
+            <ImageButton
+                android:id="@+id/make_imagebutton_text"
+                android:layout_width="@dimen/make_cake_menu_button_width"
+                android:layout_height="@dimen/make_cake_menu_button_height"
+                android:layout_marginBottom="@dimen/make_cake_menu_button_padding_vertical"
+                android:layout_marginLeft="@dimen/make_cake_menu_button_padding_horizontal"
+                android:layout_marginRight="@dimen/make_cake_menu_button_padding_horizontal"
+                android:layout_marginTop="@dimen/make_cake_menu_button_padding_vertical"
+                android:background="#0fff"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_font_text" />
+
+            <ImageButton
+                android:id="@+id/make_imagebutton_preview"
+                android:layout_width="@dimen/make_cake_menu_button_width"
+                android:layout_height="@dimen/make_cake_menu_button_height"
+                android:layout_marginBottom="@dimen/make_cake_menu_button_padding_vertical"
+                android:layout_marginLeft="@dimen/make_cake_menu_button_padding_horizontal"
+                android:layout_marginRight="@dimen/make_cake_menu_button_padding_horizontal"
+                android:layout_marginTop="@dimen/make_cake_menu_button_padding_vertical"
+                android:background="#0fff"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_make_preview_false" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="invisible"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v4.widget.SwipeRefreshLayout>

@@ -1,0 +1,144 @@
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ripple="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/confilm_swiperefreshlayout_progress"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hackm.famiryboard.view.activity.ConfilmActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/img_top_up"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true"
+            android:alpha="0.9"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/img_top_down"
+            android:scaleType="fitEnd"
+            android:adjustViewBounds="true"
+            android:alpha="0.9"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#eee"
+            android:alpha="0.2"/>
+
+        <!-- ここにToolBarを定義 -->
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_actionbar"
+            android:layout_height="@dimen/actionbar_height"
+            android:layout_width="match_parent"
+            android:background="@android:color/transparent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+        </android.support.v7.widget.Toolbar>
+
+        <FrameLayout
+            android:id="@+id/top_layout_cake"
+            android:layout_width="@dimen/top_imageview_cake_size"
+            android:layout_height="@dimen/top_imageview_cake_size"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/top_cake_vertical_margin">
+
+            <ImageView
+                android:id="@+id/confilm_imageview_preview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/top_imageview_cake_padding"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/img_top_gallery"
+                android:background="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/confilm_imageview_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img_cake_frame"
+                android:layout_gravity="center" />
+
+        </FrameLayout>
+
+        <com.andexert.library.RippleView
+            android:id="@+id/confilm_rippleview_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ripple:rv_type="rectangle"
+            ripple:rv_zoom="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_large"
+                android:background="@color/accent">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/confilm_imageview_cart"
+                        android:layout_width="@dimen/confilm_icon_cart_size"
+                        android:layout_height="@dimen/confilm_icon_cart_size"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_confilm_cart"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confilm_button_cart"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/text_size_xlarge"
+                    android:layout_gravity="center_vertical"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:visibility="invisible"/>
+            </LinearLayout>
+
+        </com.andexert.library.RippleView>
+
+        <TextView
+            android:id="@+id/confilm_textview_price"
+            android:layout_width="@dimen/confilm_imageview_badge_size"
+            android:layout_height="@dimen/confilm_imageview_badge_size"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/element_spacing_normal"
+            android:text="@string/confilm_textview_price"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/ic_confilm_prise"/>
+
+    </RelativeLayout>
+
+</android.support.v4.widget.SwipeRefreshLayout>

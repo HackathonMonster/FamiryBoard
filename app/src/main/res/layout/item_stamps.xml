@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/stamps_horizontal_margin"
+    android:paddingTop="@dimen/stamps_vertical_margin"
+    android:paddingRight="@dimen/stamps_horizontal_margin"
+    android:paddingBottom="@dimen/stamps_vertical_margin">
+
+    <ImageButton
+        android:id="@+id/stamps_imagebutton_thumb1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:scaleType="fitCenter"
+        android:background="@drawable/bg_stamp_button"
+        android:adjustViewBounds="true"
+        android:layout_marginLeft="@dimen/stamps_horizontal_margin"
+        android:layout_marginTop="@dimen/stamps_vertical_margin"
+        android:layout_marginRight="@dimen/stamps_horizontal_margin"
+        android:layout_marginBottom="@dimen/stamps_vertical_margin"
+        android:cropToPadding="false"
+        android:elevation="@dimen/view_elavation"
+        android:visibility="invisible"/>
+
+    <ImageButton
+        android:id="@+id/stamps_imagebutton_thumb2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:scaleType="fitCenter"
+        android:background="@drawable/bg_stamp_button"
+        android:adjustViewBounds="true"
+        android:layout_marginLeft="@dimen/stamps_horizontal_margin"
+        android:layout_marginTop="@dimen/stamps_vertical_margin"
+        android:layout_marginRight="@dimen/stamps_horizontal_margin"
+        android:layout_marginBottom="@dimen/stamps_vertical_margin"
+        android:elevation="@dimen/view_elavation"
+        android:visibility="invisible" />
+
+    <ImageButton
+        android:id="@+id/stamps_imagebutton_thumb3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:scaleType="fitCenter"
+        android:background="@drawable/bg_stamp_button"
+        android:adjustViewBounds="true"
+        android:layout_marginLeft="@dimen/stamps_horizontal_margin"
+        android:layout_marginTop="@dimen/stamps_vertical_margin"
+        android:layout_marginRight="@dimen/stamps_horizontal_margin"
+        android:layout_marginBottom="@dimen/stamps_vertical_margin"
+        android:elevation="@dimen/view_elavation"
+        android:visibility="invisible" />
+</LinearLayout>

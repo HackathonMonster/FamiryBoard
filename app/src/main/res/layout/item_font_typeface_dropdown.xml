@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="left|center_vertical"
+    android:background="@drawable/bg_font_item_dropdown"
+    android:gravity="left|center_vertical"
+    android:textColor="@drawable/tc_font_type_dropdown"
+    android:textSize="@dimen/text_size_medium"
+    android:text="フォント"
+    android:lines="1"
+    android:checked="false" />

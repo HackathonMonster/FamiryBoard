@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_weight="1"
+    android:paddingLeft="@dimen/select_cake_padding_horizontal"
+    android:paddingRight="@dimen/select_cake_padding_horizontal"
+    android:paddingTop="@dimen/select_cake_padding_vartical"
+    android:paddingBottom="@dimen/select_cake_padding_vartical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cake_imageview_icon"
+        android:layout_gravity="center_vertical"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/element_spacing_normal"
+        android:layout_marginBottom="@dimen/element_spacing_normal" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/select_cake_padding_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plain"
+            android:id="@+id/cake_textview_type"
+            android:background="@drawable/bg_cake_plain"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/select_cake_textsize_label" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/select_cake_margin_vartical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/cake_textview_name"
+                android:text="PICT cake Single"
+                android:textStyle="bold"
+                android:textSize="@dimen/select_cake_textsize_large"
+                android:textColor="@color/secondary_text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="（生クリーム）"
+                android:id="@+id/cake_textview_type_name"
+                android:textSize="@dimen/select_cake_textsize_type"
+                android:textColor="@color/secondary_text"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/select_cake_name_margin_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/select_cake_margin_vartical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17cm × 17cm"
+                android:id="@+id/cake_textview_size"
+                android:textSize="@dimen/select_cake_textsize_large"
+                android:textColor="@color/secondary_text"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5〜10名様用"
+                android:id="@+id/cake_textview_target"
+                android:textSize="@dimen/select_cake_textsize_large"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:textColor="@color/secondary_text"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="4,300円"
+            android:id="@+id/cake_textview_plice"
+            android:textSize="@dimen/select_cake_textsize_price"
+            android:textColor="@color/secondary_text"
+            android:layout_marginTop="@dimen/select_cake_margin_vartical"/>
+
+    </LinearLayout>
+
+</LinearLayout>

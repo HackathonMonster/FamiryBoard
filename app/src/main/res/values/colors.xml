@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- App Color -->
+<resources>
+    <!-- Primary -->
+    <color name="primary">#1181cf</color>
+    <color name="primary_dark">#38454c</color>
+    <color name="primary_light">#3ebcf6</color>
+    <!-- Primary Action Color -->
+    <color name="primary_button_normal">#3c7bda</color>
+    <color name="primary_button_action_disable">#883c7bda</color>
+    <color name="primary_button_action_pressed">#2b6ac9</color>
+    <!-- Accent...secondary...thirdry -->
+    <color name="accent">#3ebbf6</color>
+    <color name="accent_orange">#f94f33</color>
+    <color name="accent_choco">#724b26</color>
+    <color name="accent_gray">#dcdddd</color>
+
+    <!-- Accent Action Color -->
+    <color name="accent_action_disable">#883ebbf6</color>
+    <color name="accent_action_pressed">#2daae5</color>
+
+    <!-- Text -->
+    <color name="primary_text">#de000000</color>
+    <color name="primary_text_inverse">#ffffffff</color>
+    <color name="secondary_text">#7b7b7b</color>
+    <color name="secondary_text_inverse">#b3ffffff</color>
+    <color name="body_text">#60000000</color>
+    <color name="body_text_disabled">#44000000</color>
+
+    <!-- Soeme Object Color -->
+    <color name="screen_background">#ececec</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#B6B6B6</color>
+    <color name="actionbar_background">@color/primary</color>
+
+    <!-- Top Fragment -->
+    <color name="top_cake_background">#fbfaf0</color>
+    <!-- Select Cake Activity -->
+    <color name="select_cake_plain_back">@android:color/white</color>
+    <color name="select_cake_choco_back">#cccccc</color>
+    <color name="whiteboard_footer">#5d5d5d</color>
+
+    <!-- Font(Text Deco) Editor -->
+    <color name="font_layout_back">#535353</color>
+    <color name="font_layout_menu_back">@android:color/transparent</color>
+    <color name="font_button_back">@android:color/white</color>
+    <color name="font_size_back">@android:color/black</color>
+    <color name="font_menu_sepalater_color">@android:color/black</color>
+    <color name="font_menu_back_false">@color/accent</color>
+    <color name="font_menu_back_true">#262626</color>
+
+    <!-- Navdrawer -->
+    <color name="navdrawer_background">#535353</color>
+    <color name="navdrawer_text_color">@color/primary_text</color>
+    <color name="navdrawer_text_color_selected">@color/primary</color>
+    <color name="navdrawer_icon_tint">#888</color>
+    <color name="navdrawer_icon_tint_selected">@color/primary</color>
+
+    <color name="refresh_progress_1">@color/primary</color>
+    <color name="refresh_progress_2">@color/accent</color>
+    <color name="refresh_progress_3">@color/accent_orange</color>
+
+</resources>

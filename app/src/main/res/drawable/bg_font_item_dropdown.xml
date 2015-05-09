@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+            <solid android:color="@color/font_menu_back_false"/>
+            <padding android:left="@dimen/font_menu_gravity_padding"
+                android:right="@dimen/font_menu_gravity_padding"
+                android:top="@dimen/font_menu_gravity_padding"
+                android:bottom="@dimen/font_menu_gravity_padding"/>
+        </shape>
+    </item>
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+            <solid android:color="@android:color/white"/>
+            <padding android:left="@dimen/font_menu_gravity_padding"
+                android:right="@dimen/font_menu_gravity_padding"
+                android:top="@dimen/font_menu_gravity_padding"
+                android:bottom="@dimen/font_menu_gravity_padding"/>
+        </shape>
+    </item>
+</selector>

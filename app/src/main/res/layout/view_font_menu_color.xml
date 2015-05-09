@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/font_layout_color"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/font_horizontal_padding"
+    android:paddingTop="@dimen/font_vertical_margin"
+    android:paddingRight="@dimen/font_horizontal_padding"
+    android:paddingBottom="@dimen/font_vertical_margin"
+    android:background="@color/font_layout_menu_back"
+    android:visibility="visible">
+
+    <View
+        android:id="@+id/font_view_color_palette"
+        android:layout_width="@dimen/font_button_width"
+        android:layout_height="@dimen/font_button_height"
+        android:background="#000"
+        android:layout_marginRight="@dimen/font_horizontal_padding" />
+
+    <com.hackm.famiryboard.view.widget.ColorSelectorView
+        android:id="@+id/font_colorselectorview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/font_button_height" />
+
+</LinearLayout>

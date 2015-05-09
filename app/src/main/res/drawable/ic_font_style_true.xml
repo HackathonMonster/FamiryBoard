@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/font_menu_back_false"/>
+    <size android:width="@dimen/font_button_width"
+        android:height="@dimen/font_button_width"/>
+    <padding android:left="@dimen/font_menu_gravity_padding"
+        android:right="@dimen/font_menu_gravity_padding"
+        android:top="@dimen/font_menu_gravity_padding"
+        android:bottom="@dimen/font_menu_gravity_padding"/>
+</shape>

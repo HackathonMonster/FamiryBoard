@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="@android:color/transparent"/>
+
+            <stroke android:width="@dimen/stamp_stroke_width" android:color="@color/accent"/>
+            <padding
+                android:left="@dimen/stamp_stroke_width"
+                android:top="@dimen/stamp_stroke_width"
+                android:right="@dimen/stamp_stroke_width"
+                android:bottom="@dimen/stamp_stroke_width"/>
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="@android:color/transparent"/>
+        </shape>
+    </item>
+</selector>

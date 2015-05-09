@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/make_cake_getpic_nav_height">
+
+
+    <LinearLayout
+        android:id="@+id/make_getpic_layout_camera"
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/accent_gray">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/primary_text"
+            android:layout_gravity="center_vertical"
+            android:text="@string/make_getpic_camera" />
+
+        <ImageView
+            android:layout_width="@dimen/make_cake_getpic_nav_icon_size"
+            android:layout_height="@dimen/make_cake_getpic_nav_icon_size"
+            android:src="@drawable/ic_make_getpic_camera"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/element_spacing_normal" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/make_getpic_layout_gallery"
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/accent">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/primary_text"
+            android:layout_gravity="center_vertical"
+            android:text="@string/make_getpic_gallery" />
+
+        <ImageView
+            android:layout_width="@dimen/make_cake_getpic_nav_icon_size"
+            android:layout_height="@dimen/make_cake_getpic_nav_icon_size"
+            android:src="@drawable/ic_make_getpic_gallery"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/element_spacing_normal" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+
+    </LinearLayout>
+</LinearLayout>

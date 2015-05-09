@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="font_colors_array">
+        <item>#000000</item>
+        <item>#666666</item>
+        <item>#999999</item>
+        <item>#ffffff</item>
+        <item>#ca0a14</item>
+        <item>#ca1067</item>
+        <item>#ca1fc8</item>
+        <item>#651bc9</item>
+        <item>#341bc7</item>
+        <item>#1069c9</item>
+        <item>#199aca</item>
+        <item>#22cccb</item>
+        <item>#21cb9a</item>
+        <item>#21ca6a</item>
+        <item>#389719</item>
+        <item>#043105</item>
+        <item>#666511</item>
+        <item>#666511</item>
+        <item>#ccca2b</item>
+        <item>#986516</item>
+        <item>#65330a</item>
+        <item>#986667</item>
+        <item>#fecb9c</item>
+        <item>#fffe9f</item>
+        <item>#9dfffe</item>
+        <item>#9bcdfd</item>
+        <item>#999cfc</item>
+        <item>#cb9cfc</item>
+        <item>#fd9cfd</item>
+        <item>#fd9bcb</item>
+        <item>#fd9a9b</item>
+    </array>
+</resources>

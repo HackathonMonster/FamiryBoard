@@ -1,0 +1,51 @@
+{
+    "data":
+    [
+        {
+            "type":1,
+            "type_name":"（生クリーム）",
+            "type_name_en":"white cake small",
+            "name":"PICTcake Single",
+            "width":17,
+            "height":17,
+            "target":"5 〜10",
+            "price":"4,320",
+            "image_path":"file:///android_asset/images/img_menu_cake_plain_small.png"
+        },
+        {
+            "type":2,
+            "type_name":"（チョコレート）",
+            "type_name_en":"chocolate cake small",
+            "name":"PICTcake Single",
+            "width":17,
+            "height":17,
+            "target":"5 〜10",
+            "price":"4,320",
+            "image_path":"file:///android_asset/images/img_menu_cake_choco_small.png"
+        },
+        {
+            "type":3,
+            "type_name":"（生クリーム）",
+            "type_name_en":"white cake large",
+            "name":"PICTcake Double",
+            "width":22,
+            "height":22,
+            "target":"10〜20",
+            "price":"8,640",
+            "image_path":"file:///android_asset/images/img_menu_cake_plain_large.png"
+        },
+        {
+            "type":4,
+            "type_name":"（チョコレート）",
+            "type_name_en":"chocolate cake large",
+            "name":"PICTcake Double",
+            "width":22,
+            "height":22,
+            "target":"10〜20",
+            "price":"8,640",
+            "image_path":"file:///android_asset/images/img_menu_cake_choco_large.png"
+        }
+    ],
+    "version":1.1
+}
+

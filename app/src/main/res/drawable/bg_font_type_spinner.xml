@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+            <solid android:color="@android:color/transparent"/>
+            <stroke android:color="@color/accent_gray"
+                android:width="@dimen/font_stroke_width"/>
+            <padding android:left="@dimen/font_stroke_width"
+                android:right="@dimen/font_stroke_width"
+                android:top="@dimen/font_stroke_width"
+                android:bottom="@dimen/font_stroke_width"/>
+        </shape>
+    </item>
+</selector>

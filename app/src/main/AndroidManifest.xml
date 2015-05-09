@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hackm.famiryboard" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.Custom"
+        android:name="com.hackm.famiryboard.FamiryBoardApplication"
+        android:largeHeap="true">
+
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".view.activity.MainActivity_"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".view.activity.SplashActivity_"
+            android:label="@string/title_activity_splash"
+            android:launchMode="singleTask" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.activity.SelectBoardActivity_"
+            android:label="@string/title_activity_select_cake" >
+        </activity>
+        <activity
+            android:name=".view.activity.WhiteBoardActivity_"
+            android:label="@string/title_activity_make_cake"
+            android:windowSoftInputMode="adjustResize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".view.activity.ConfilmActivity_"
+            android:label="@string/title_activity_confilm"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".view.activity.SelectStampCategoryActivity_"
+            android:label="@string/title_activity_select_stamp_category" >
+        </activity>
+        <activity
+            android:name=".view.activity.SelectStampActivity_"
+            android:label="@string/title_activity_select_stamp" >
+        </activity>
+        <activity
+            android:name=".view.activity.WebpageActivity_"
+            android:label="@string/title_activity_webpage" >
+        </activity>
+    </application>
+
+</manifest>
