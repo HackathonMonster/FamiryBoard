@@ -27,7 +27,14 @@ public class UriUtil {
     //TODO
     static public String postImageUrl() {
         Uri.Builder builder = getBaseUri();
-        builder.path("/postimage");
+        builder.path("/api/images");
+        return builder.build().toString();
+    }
+
+    static public String getItemsUrl(String boardId) {
+        Uri.Builder builder = getBaseUri();
+        builder.path("/api/items");
+        builder.appendQueryParameter("boardId", boardId);
         return builder.build().toString();
     }
 

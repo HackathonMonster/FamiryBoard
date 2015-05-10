@@ -21,13 +21,21 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.hackm.famiryboard.controller.provider.NetworkTaskCallback;
 import com.hackm.famiryboard.controller.util.ImageUtil;
+import com.hackm.famiryboard.controller.util.JSONArrayRequestUtil;
+import com.hackm.famiryboard.controller.util.JSONRequestUtil;
 import com.hackm.famiryboard.controller.util.PicassoHelper;
 import com.hackm.famiryboard.controller.util.PostPictureRequestUtil;
 import com.hackm.famiryboard.controller.util.UriUtil;
+import com.hackm.famiryboard.controller.util.VolleyHelper;
 import com.hackm.famiryboard.model.enumerate.NetworkTasks;
 import com.hackm.famiryboard.model.pojo.FontStyles;
+import com.hackm.famiryboard.model.system.Account;
 import com.hackm.famiryboard.model.system.AppConfig;
 import com.hackm.famiryboard.model.viewobject.DecoImage;
 import com.hackm.famiryboard.model.viewobject.DecoText;
@@ -50,6 +58,9 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 import org.apache.http.NameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,10 +68,8 @@ import java.util.ArrayList;
 @EActivity(R.layout.activity_whiteboard)
 public class WhiteBoardActivity extends Activity implements TextDecoDialogFragment.OnTextDecoratedListener, WhiteBoardView.OnTextTapListener, SignalRFragment.OnUpdateConnectionListener {
 
-    @Extra("cake_json")
-    String mCakeJson;
-    //Get by select cake activity
-    private Cake mCake;
+    @Extra("board_id")
+    String mBoardId;
 
     //Main Content
     @ViewById(R.id.make_cakedecoview)
@@ -73,7 +82,7 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
     ImageButton mCameraButton;
     @ViewById(R.id.make_imagebutton_stamp)
     ImageButton mStampButton;
-    @ViewById(R.id.make_imagebutton_preview)
+    //@ViewById(R.id.make_imagebutton_preview)
     ImageButton mPreviewButton;
     @ViewById(R.id.make_layout_footer)
     LinearLayout mFooterLayout;
@@ -88,35 +97,50 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
     private Uri mImageUri;
     private SignalRFragment mSignalRFragment;
 
-    private String mNowGettingImageUrl;
+    private DecoImage mNowGettingDecoImage;
+
+    private android.os.Handler mHandler;
 
     @AfterInject
     void onAfterInject() {
-        if (mCakeJson != null) {
-            mCake = new Gson().fromJson(mCakeJson, Cake.class);
-        }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mSignalRFragment = SignalRFragment.newInstance("ApplicationHub", UriUtil.getSignalrUrl());
+        mSignalRFragment = SignalRFragment.newInstance("ApplicationHub", UriUtil.getSignalrUrl(), mBoardId);
         getFragmentManager().beginTransaction().add(mSignalRFragment, SignalRFragment.class.getSimpleName()).commit();
     }
 
     @AfterViews
     void onAfterViews() {
+        mHandler = new android.os.Handler();
         mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        if (mCake != null) {
-            //Set image frame cake type. 0->plain 1->choco
-            mFrameImageView.setImageResource(mCake.type % 2 == 1 ? R.drawable.img_make_frame_plain : R.drawable.img_make_frame_choco);
-        }
         mCakeDevoView.setOnTextTapListener(this);
-
         //プログレスレイアウトの設定
         mProgressLayout.setColorSchemeResources(R.color.refresh_progress_1, R.color.refresh_progress_2, R.color.refresh_progress_3);
         //ジェスチャを無効にする
         mProgressLayout.setEnabled(false);
+
+        Account account = Account.getAccount(getApplicationContext());
+        JSONArrayRequestUtil boardItemRequest = new JSONArrayRequestUtil(new NetworkTaskCallback() {
+            @Override
+            public void onSuccessNetworkTask(int taskId, Object object) {
+                if (mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(false);
+                JSONArray jsonArray = (JSONArray) object;
+                for(int i=0; i< jsonArray.length(); i++) {
+                    /*
+                    try {
+                        createDecoItem(jsonArray.getJSONObject(i));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    */
+                }
+            }
+            @Override
+            public void onFailedNetworkTask(int taskId, Object object) {
+                if (mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(false);
+            }
+        }, WhiteBoardActivity.class.getSimpleName(),
+                account.getAccountHeader());
+        boardItemRequest.onRequest(VolleyHelper.getRequestQueue(getApplicationContext()), Request.Priority.HIGH, UriUtil.getItemsUrl(mBoardId), NetworkTasks.GetBoardItems);
+        if (!mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(true);
     }
 
     @Override
@@ -169,7 +193,7 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
         }
     }
 
-    @Click(R.id.make_imagebutton_preview)
+    //@Click(R.id.make_imagebutton_preview)
     void clickPreview() {
         if (mCakeDevoView.getDecosCount() < 1) {
             if (getFragmentManager().findFragmentByTag(AppConfig.TAG_MESSAGE_DIALOG) == null) {
@@ -194,8 +218,6 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
         SharedPreferences.Editor editor = getSharedPreferences(AppConfig.PREF_NAME, MODE_PRIVATE).edit();
         editor.putString(AppConfig.PREF_SAVED_IMAGE, ImageUtil.encodeImageBase64(bitmap));
         editor.commit();
-
-        ConfilmActivity_.intent(this).mImageString(null).mCakeJson(mCakeJson).startForResult(AppConfig.ID_ACTIVITY_CONFILM);
     }
 
     private Bitmap transformImage(Bitmap source) {
@@ -235,7 +257,7 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
                     try {
                         Bitmap bitmap = ImageUtil.loadImage(getApplicationContext(), mImageUri, true);
                         postImage(bitmap, Deco.TYPE_CAMERA);
-                        // mCakeDevoView.addDecoImageItem(bitmap, "",Deco.TYPE_CAMERA);
+                        if (!mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(true);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -247,20 +269,23 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
                     try {
                         Bitmap bitmap = ImageUtil.loadImage(getApplicationContext(), data.getData(), false);
                         postImage(bitmap, Deco.TYPE_GALLERY);
-                        // mCakeDevoView.addDecoImageItem(bitmap, "",Deco.TYPE_GALLERY);
+                        if (!mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(true);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     closeFooterMenu();
+
                 }
                 break;
             case AppConfig.ID_ACTIVITY_SELECT_STAMP_CATEGORY:
                 mStampButton.setImageResource(R.drawable.ic_make_stamp_false);
                 if (resultCode == RESULT_OK) {
                     Stamp stamp = new Gson().fromJson(data.getStringExtra("stamp"), Stamp.class);
-                    int imageSize = (int) (mCakeDevoView.getWidth() * 0.8f);
-                    mNowGettingImageUrl = stamp.stamp_url;
-                    PicassoHelper.with(getApplicationContext()).load(stamp.stamp_url).priority(Picasso.Priority.HIGH).skipMemoryCache().resize(imageSize, imageSize).into(addStampTarget);
+                    int imageSize = (int) (mCakeDevoView.getWidth() * 0.6f);
+                    //PicassoHelper.with(getApplicationContext()).load(stamp.stamp_url).priority(Picasso.Priority.HIGH).skipMemoryCache().resize(imageSize, imageSize).into(addStampTarget);
+                    DecoImage decoImage = new DecoImage(mCakeDevoView.getWidth() / 2, mCakeDevoView.getHeight() / 2, imageSize, imageSize, 0, Deco.TYPE_STAMP, stamp.stamp_url, mBoardId);
+                    mSignalRFragment.createItem(decoImage);
+                    if (!mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(true);
                 }
                 break;
             case AppConfig.ID_ACTIVITY_CONFILM:
@@ -283,11 +308,12 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
         DecoText decoText;
         if (index < 0) {
             //マイナスの値なら新しく追加をする
-            decoText= mCakeDevoView.addDecoTextItem(bitmap, Deco.TYPE_TEXT, fontStyles);
-            mSignalRFragment.sendMessage(decoText.toJson());
+            decoText = new DecoText(mCakeDevoView.getWidth() / 2, mCakeDevoView.getHeight() / 2, bitmap.getWidth(), bitmap.getHeight() / 2, 0, Deco.TYPE_TEXT, mBoardId, fontStyles);
+            mSignalRFragment.createItem(decoText);
         } else {
-            decoText = mCakeDevoView.replaceDecoItem(bitmap, Deco.TYPE_TEXT, fontStyles, index);
-            mSignalRFragment.sendMessage(decoText.toJson());
+            decoText = mCakeDevoView.replaceDecoItem(bitmap, Deco.TYPE_TEXT, fontStyles, index, mBoardId);
+            //TODO Update Item
+            mSignalRFragment.updateItem(decoText.toJson());
         }
     }
 
@@ -308,18 +334,18 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
         @Override
         public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
             //画像を読み込み完了したので追加
-            if (mNowGettingImageUrl != null) {
-                DecoImage decoImage = mCakeDevoView.addDecoImageItem(bitmap, mNowGettingImageUrl, Deco.TYPE_STAMP);
-                if (decoImage != null) {
-                    mSignalRFragment.sendMessage(new Gson().toJson(decoImage));
-                }
-                mNowGettingImageUrl = null;
+            if (mNowGettingDecoImage != null) {
+                mNowGettingDecoImage.bitmap = bitmap;
+                mCakeDevoView.addDecoItem(mNowGettingDecoImage);
+                mNowGettingDecoImage = null;
             }
+            if (mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(false);
         }
 
         @Override
         public void onBitmapFailed(Drawable errorDrawable) {
             Toast.makeText(getApplicationContext(), getString(R.string.faild_stamp_get), Toast.LENGTH_LONG).show();
+            if (mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(false);
         }
 
         @Override
@@ -328,17 +354,19 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
     };
 
     private void postImage(final Bitmap bitmap, final int type) {
-        if (!mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(true);
         PostPictureRequestUtil postPictureRequestUtil = new PostPictureRequestUtil(NetworkTasks.PostPicture, new NetworkTaskCallback() {
             @Override
             public void onSuccessNetworkTask(int taskId, Object object) {
-                if (mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(false);
-                //TODO Get Image Url
-                String imageUrl = "";
-                DecoImage decoImage = mCakeDevoView.addDecoImageItem(bitmap, imageUrl, type);
-                if (decoImage != null) {
-                    mSignalRFragment.sendMessage(new Gson().toJson(decoImage));
+                JSONObject jsonObject = (JSONObject) object;
+                String imageUrl = null;
+                try {
+                    imageUrl = jsonObject.getString("Url");
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+                int imageSize = (int) (mCakeDevoView.getWidth() * 0.6f);
+                DecoImage decoImage = new DecoImage(mCakeDevoView.getWidth() / 2, mCakeDevoView.getHeight() / 2, imageSize, imageSize, 0, Deco.TYPE_CAMERA, imageUrl, mBoardId);
+                mSignalRFragment.createItem(decoImage);
             }
 
             @Override
@@ -351,15 +379,89 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
         postPictureRequestUtil.onRequest(UriUtil.postImageUrl(), new ArrayList<NameValuePair>(), bitmap);
     }
 
+    private void createDecoItem(String json) {
+        Log.d("CreateDecoItem", json);
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            if (jsonObject.getInt("type") != Deco.TYPE_TEXT) {
+                final DecoImage decoImage = new DecoImage(
+                        jsonObject.getInt("x"),
+                        jsonObject.getInt("y"),
+                        jsonObject.getInt("width"),
+                        jsonObject.getInt("height"),
+                        jsonObject.getInt("rotation"),
+                        jsonObject.getInt("type"),
+                        jsonObject.getString("imageUrl"),
+                        jsonObject.getString("boardId"));
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mNowGettingDecoImage = decoImage;
+                        int imageSize = (int) (mCakeDevoView.getWidth() * 0.6f);
+                        PicassoHelper.with(getApplicationContext()).load(decoImage.imageUrl).resize(imageSize, imageSize).into(addStampTarget);
+                    }
+                });
+            } else {
+                JSONObject fontStyleObject = jsonObject.getJSONObject("styles");
+                FontStyles fontStyles = new FontStyles(fontStyleObject.getString("text"));
+                fontStyles.color = fontStyleObject.getInt("color");
+                fontStyles.size = fontStyleObject.getInt("size");
+                fontStyles.gravity = fontStyleObject.getInt("gravity");
+                fontStyles.style = fontStyleObject.getInt("style");
+                fontStyles.typefacePath = fontStyleObject.getString("typefacePath");
+                final DecoText decoText = new DecoText(
+                        jsonObject.getInt("x"),
+                        jsonObject.getInt("y"),
+                        jsonObject.getInt("width"),
+                        jsonObject.getInt("height"),
+                        jsonObject.getInt("rotation"),
+                        jsonObject.getInt("type"),
+                        jsonObject.getString("boardId"),
+                        fontStyles);
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        decoText.bitmap = DecoText.createBitmap(decoText.width, decoText.height, decoText.styles);
+                        mCakeDevoView.addDecoItem(decoText);
+                    }
+                });
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
+    /**
+     * 別のところから飛んできた子
+     * @param json
+     */
     @Override
-    public void onMessageReceived(String message) {
-        Log.d(WhiteBoardActivity.class.getSimpleName(), message);
-        //TODO オブジェクトの受け取りの部分の処理
+    public void onCreateItem(String json) {
+        createDecoItem(json);
+    }
+
+    /**
+     * うちの子
+     * @param json
+     */
+    @Override
+    public void onCreateSucccess(String json) {
+        createDecoItem(json);
+
     }
 
     @Override
-    public void onMessageSented() {
+    public void onUpdateItem(String json) {
+        //TODO
+    }
+
+    @Override
+    public void onDeleteItem(String id) {
+        //TODO
+    }
+
+    @Override
+    public void onError(String message) {
 
     }
 
@@ -382,4 +484,6 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
     public void onConnectionClosed() {
 
     }
+
+
 }

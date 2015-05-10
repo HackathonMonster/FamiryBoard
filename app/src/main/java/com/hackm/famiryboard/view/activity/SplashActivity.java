@@ -45,9 +45,14 @@ public class SplashActivity extends ActionBarActivity {
         JSONRequestUtil loginRequest = new JSONRequestUtil(new NetworkTaskCallback() {
             @Override
             public void onSuccessNetworkTask(int taskId, Object object) {
-                Account account = new Gson().fromJson(object.toString(), Account.class);
-                if (account != null) {
-                    Account.updateToken(account.access_token, getApplicationContext());
+                JSONObject jsonObject = (JSONObject) object;
+                try {
+                    Account account = Account.getAccount(getApplicationContext());
+                    account.access_token = jsonObject.getString("access_token");
+                    account.token_type = jsonObject.getString("token_type");
+                    account.saveAccount(getApplicationContext());
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
                 intentMain();
             }

@@ -22,28 +22,28 @@ import java.text.Format;
  */
 public class DecoText extends Deco {
 
-    public transient FontStyles styles;
+    public FontStyles styles;
 
-    public DecoText(Bitmap bitmap, float x, float y, float width, float height, int rotation, int decoType, FontStyles styles) {
-        super(bitmap, x, y, width, height, rotation, decoType);
+    public DecoText(Bitmap bitmap, float x, float y, float width, float height, int rotation, int decoType, String boardId, FontStyles styles) {
+        super(bitmap, x, y, width, height, rotation, decoType, boardId);
         this.styles = styles;
     }
 
-    public DecoText(float x, float y, float width, float height, int rotation, int type, FontStyles styles) {
-        super(x, y, width, height, rotation, type);
+    public DecoText(float x, float y, float width, float height, int rotation, int type, String boardId, FontStyles styles) {
+        super(x, y, width, height, rotation, type, boardId);
         this.bitmap = createBitmap(width, height, styles);
         this.styles = styles;
     }
 
     public DecoText(Deco deco, FontStyles styles) {
-        super(deco.bitmap, deco.x, deco.y, deco.width, deco.height, deco.rotation, deco.type);
+        super(deco.bitmap, deco.x, deco.y, deco.width, deco.height, deco.rotation, deco.type, deco.boardId);
         if (this.bitmap == null) {
             this.bitmap = createBitmap(width, height, styles);
         }
         this.styles = styles;
     }
 
-    private Bitmap createBitmap(float width, float height, FontStyles fontStyles) {
+    public static Bitmap createBitmap(float width, float height, FontStyles fontStyles) {
         Bitmap bitmap = Bitmap.createBitmap((int) width, (int) height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         Paint paint = new Paint();
@@ -102,6 +102,7 @@ public class DecoText extends Deco {
         Deco deco = new Gson().fromJson(jsonObject.toString(), Deco.class);
         DecoText decoText = (DecoText) deco;
         decoText.styles = fontStyles;
+        decoText.bitmap = createBitmap(deco.width, deco.height, decoText.styles);
         return decoText;
     }
 }

@@ -60,7 +60,7 @@
             android:layout_above="@+id/login_linearlayout_center"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/login_imageview_bottom_margin"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/ic_icon_white" />
 
         <Button
             android:id="@+id/login_button_login"

@@ -21,8 +21,8 @@ public class DecoImage extends Deco {
 
     public String imageUrl;
 
-    public DecoImage(Bitmap bitmap, float x, float y, float width, float height, int rotation, int type, String imageUrl) {
-        super(bitmap, x, y, width, height, rotation, type);
+    public DecoImage(Bitmap bitmap, float x, float y, float width, float height, int rotation, int type, String imageUrl, String boardId) {
+        super(bitmap, x, y, width, height, rotation, type, boardId);
         this.imageUrl = imageUrl;
     }
 
@@ -36,8 +36,8 @@ public class DecoImage extends Deco {
      * @param type
      * @param imageUrl
      */
-    public DecoImage(float x, float y, float width, float height, int rotation, int type, String imageUrl) {
-        super(x, y, width, height, rotation, type);
+    public DecoImage(float x, float y, float width, float height, int rotation, int type, String imageUrl, String boardId) {
+        super(x, y, width, height, rotation, type, boardId);
         this.imageUrl = imageUrl;
     }
 }

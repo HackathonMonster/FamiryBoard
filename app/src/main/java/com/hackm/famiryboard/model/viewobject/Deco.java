@@ -26,12 +26,14 @@ public class Deco {
     public float width, height;
     public int rotation;
     public int type = TYPE_CAMERA;
+    public String boardId;
+    public String id;
 
     //Jsonにするときに無視する
     public transient Bitmap bitmap;
     private transient Paint paint = null;
 
-    public Deco(Bitmap bitmap, float x, float y, float width, float height, int rotation, int type) {
+    public Deco(Bitmap bitmap, float x, float y, float width, float height, int rotation, int type, String boardId) {
         this.bitmap = bitmap;
         this.x = x;
         this.y = y;
@@ -47,7 +49,7 @@ public class Deco {
     }
 
     // Non Bitmap Type
-    public Deco(float x, float y, float width, float height, int rotation, int type) {
+    public Deco(float x, float y, float width, float height, int rotation, int type, String boardId) {
         this.x = x;
         this.y = y;
         this.width = width;

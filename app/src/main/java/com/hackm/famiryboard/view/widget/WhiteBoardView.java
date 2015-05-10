@@ -76,7 +76,12 @@ public class WhiteBoardView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         for (Deco deco : mDecos) {
-            deco.draw(canvas);
+            if(deco==null) continue;
+            if (deco instanceof DecoImage) {
+                ((DecoImage) deco).draw(canvas);
+            } else {
+                ((DecoText) deco).draw(canvas);
+            }
         }
         if (mFocusObjectIndex >= 0 && mFocusObjectIndex < mDecos.size()) {
             drawFrame(canvas, mDecos.get(mFocusObjectIndex));
@@ -150,7 +155,7 @@ public class WhiteBoardView extends View {
      *
      * @param bitmap
      */
-    public DecoImage addDecoImageItem(Bitmap bitmap, String imageUrl, int type) {
+    public DecoImage addDecoImageItem(Bitmap bitmap, String imageUrl, int type, String boardId) {
         float scale = 1.0f;
         if (Math.max(bitmap.getWidth(), bitmap.getHeight()) > 0) {
             scale = (float) Math.max(getWidth() / 2, getHeight() / 2) / (float) Math.max(bitmap.getWidth(), bitmap.getHeight());
@@ -158,7 +163,7 @@ public class WhiteBoardView extends View {
         if (AppConfig.DEBUG) {
             Log.d(getClass().getSimpleName(), "AddDecoItem" + Float.toString(scale));
         }
-        return (DecoImage) this.addDecoItem(new DecoImage(bitmap, getWidth() / 2, getHeight() / 2, bitmap.getWidth() * scale, bitmap.getHeight() * scale, 0, type, imageUrl));
+        return (DecoImage) this.addDecoItem(new DecoImage(bitmap, getWidth() / 2, getHeight() / 2, bitmap.getWidth() * scale, bitmap.getHeight() * scale, 0, type, imageUrl, boardId));
     }
 
     /**
@@ -166,12 +171,13 @@ public class WhiteBoardView extends View {
      *
      * @param bitmap
      */
-    public DecoText addDecoTextItem(Bitmap bitmap, int type, FontStyles fontStyles) {
-        return (DecoText) this.addDecoItem(new DecoText(bitmap, getWidth() / 2, getHeight() / 2, bitmap.getWidth(), bitmap.getHeight(), 0, type, fontStyles));
+    public DecoText addDecoTextItem(Bitmap bitmap, int type, FontStyles fontStyles, String boardId) {
+        return (DecoText) this.addDecoItem(new DecoText(bitmap, getWidth() / 2, getHeight() / 2, bitmap.getWidth(), bitmap.getHeight(), 0, type, boardId, fontStyles));
     }
 
     /**
      * Add new Deco Item
+     *
      * @param deco
      */
     public Deco addDecoItem(Deco deco) {
@@ -183,7 +189,7 @@ public class WhiteBoardView extends View {
         return deco;
     }
 
-    public DecoText replaceDecoItem(Bitmap bitmap, int type, FontStyles fontStyles, int index) {
+    public DecoText replaceDecoItem(Bitmap bitmap, int type, FontStyles fontStyles, int index, String boardId) {
         DecoText decoText = null;
         try {
             decoText = (DecoText) mDecos.get(index);
@@ -191,10 +197,10 @@ public class WhiteBoardView extends View {
             decoText.styles = fontStyles;
             mDecos.set(index, decoText);
         } catch (ArrayIndexOutOfBoundsException e) {
-            addDecoTextItem(bitmap, type, fontStyles);
+            addDecoTextItem(bitmap, type, fontStyles, boardId);
             return null;
         } catch (ClassCastException e) {
-            addDecoTextItem(bitmap, type, fontStyles);
+            addDecoTextItem(bitmap, type, fontStyles, boardId);
             return null;
         }
         //Update

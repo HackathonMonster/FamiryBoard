@@ -71,11 +71,15 @@ public class LoginActivity extends Activity {
         JSONRequestUtil loginRequest = new JSONRequestUtil(new NetworkTaskCallback() {
             @Override
             public void onSuccessNetworkTask(int taskId, Object object) {
-                Account account = new Gson().fromJson(object.toString(), Account.class);
-                account.password = mPasswordEditText.getText().toString();
-                if (account != null) {
-                    //TODO ログイン
+                JSONObject jsonObject = (JSONObject) object;
+                try {
+                    Account account = Account.getAccount(getApplicationContext());
+                    account.access_token = jsonObject.getString("access_token");
+                    account.token_type = jsonObject.getString("token_type");
+                    account.expires_in = jsonObject.getString("expires_in");
                     account.saveAccount(getApplicationContext());
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
                 if (mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(false);
                 MainActivity_.intent(mContext).start();

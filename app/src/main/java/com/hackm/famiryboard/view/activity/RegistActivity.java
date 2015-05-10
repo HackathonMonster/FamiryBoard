@@ -3,6 +3,7 @@ package com.hackm.famiryboard.view.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.widget.EditText;
 
 import com.android.volley.Request;
@@ -71,17 +72,17 @@ public class RegistActivity extends Activity {
      * Getting User Infomation
      */
     @Click(R.id.regist_button_signup)
-    void clickLogin() {
+    void clickSignUp() {
         JSONRequestUtil loginRequest = new JSONRequestUtil(new NetworkTaskCallback() {
             @Override
             public void onSuccessNetworkTask(int taskId, Object object) {
-                Account account = new Gson().fromJson(object.toString(), Account.class);
-                if (account != null) {
-                    //TODO ログイン
-                    account.saveAccount(getApplicationContext());
-                    MainActivity_.intent(mContext).start();
-                }
-                if (mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(false);
+                Account account = new Account();
+                account.userName = mNameEditText.getText().toString();
+                account.email = mMailEditText.getText().toString();
+                account.password = mPasswordEditText.getText().toString();
+                account.birthday = mBirthDayEditText.getText().toString();
+                account.saveAccount(getApplicationContext());
+                postLogin();
             }
             @Override
             public void onFailedNetworkTask(int taskId, Object object) {
@@ -104,6 +105,7 @@ public class RegistActivity extends Activity {
             return;
         }
         if (!mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(true);
+        Log.d("RegistRequest", bodyParams.toString());
         loginRequest.onRequest(VolleyHelper.getRequestQueue(getApplicationContext()),
                 Request.Priority.HIGH,
                 UriUtil.postRegistUrl(),
@@ -111,5 +113,51 @@ public class RegistActivity extends Activity {
                 bodyParams
         );
     }
+
+
+    void postLogin() {
+        JSONRequestUtil loginRequest = new JSONRequestUtil(new NetworkTaskCallback() {
+            @Override
+            public void onSuccessNetworkTask(int taskId, Object object) {
+                JSONObject jsonObject = (JSONObject) object;
+                try {
+                    Account account = Account.getAccount(getApplicationContext());
+                    account.access_token = jsonObject.getString("access_token");
+                    account.token_type = jsonObject.getString("token_type");
+                    account.expires_in = jsonObject.getString("expires_in");
+                    account.saveAccount(getApplicationContext());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if (mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(false);
+                MainActivity_.intent(mContext).start();
+            }
+            @Override
+            public void onFailedNetworkTask(int taskId, Object object) {
+                if (mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(false);
+                //TODO ログイン失敗のダイログ
+                MainActivity_.intent(mContext).start();
+            }
+        },
+                LoginActivity.class.getSimpleName(),
+                new HashMap<String, String>());
+        JSONObject bodyParams = new JSONObject();
+        try {
+            bodyParams.put("password", mMailEditText.getText().toString());
+            bodyParams.put("username", mPasswordEditText.getText().toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return;
+        }
+        if (!mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(true);
+        loginRequest.onRequest(VolleyHelper.getRequestQueue(getApplicationContext()),
+                Request.Priority.HIGH,
+                UriUtil.postLoginUrl(),
+                NetworkTasks.PostLogin,
+                bodyParams
+        );
+    }
+
+
 
 }

@@ -23,6 +23,8 @@ public class Account {
     public String expires_in;
     public String userName;
     public String password;
+    public String email;
+    public String birthday;
 
     /**
      * Load Data from Preferences
@@ -34,7 +36,7 @@ public class Account {
         if (!json.isEmpty()) {
             return new Gson().fromJson(json, Account.class);
         }
-        return null;
+        return new Account();
     }
 
     //check have to account
@@ -56,6 +58,10 @@ public class Account {
         this.token_type = token_type;
         this.expires_in = expires_in;
         this.userName = userName;
+    }
+
+    public Account() {
+
     }
 
     public static void updateToken(String access_token, Context context) {

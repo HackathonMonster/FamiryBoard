@@ -58,6 +58,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
                 transaction.replace(R.id.main_layout_content, fragment);
                 transaction.commit();
             }
+            SelectBoardActivity_.intent(this).start();
         } else {
             Fragment fragment = WebpageFragment_.builder().mPageUrl(drawerMenu.url).build();
             transaction.replace(R.id.main_layout_content, fragment);

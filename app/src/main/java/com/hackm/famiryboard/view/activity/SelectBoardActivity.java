@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @EActivity(R.layout.activity_select_board)
-public class SelectBoardActivity extends ActionBarActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class SelectBoardActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
     @ViewById(R.id.toolbar_actionbar)
     Toolbar mToolbar;
@@ -45,6 +45,8 @@ public class SelectBoardActivity extends ActionBarActivity implements AdapterVie
     void onAfterViews() {
         setAdapter();
         mContentListView.setAdapter(mAdapter);
+        mContentListView.setOnItemClickListener(this);
+
         mToolbar.setTitle(R.string.title_activity_select_cake);
         mToolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mToolbar);
@@ -89,13 +91,7 @@ public class SelectBoardActivity extends ActionBarActivity implements AdapterVie
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Cake cake = mAdapter.getItem(position);
-        WhiteBoardActivity_.intent(this).mCakeJson(new Gson().toJson(cake)).start();
+        WhiteBoardActivity_.intent(this).mBoardId("2f4723eb-c11f-4f91-82a1-9e7e709026b7").start();
         finish();
-    }
-
-    @Override
-    public void onClick(View v) {
-        Cake cake = (Cake) v.getTag();
-        WhiteBoardActivity_.intent(this).mCakeJson(new Gson().toJson(cake)).start();
     }
 }

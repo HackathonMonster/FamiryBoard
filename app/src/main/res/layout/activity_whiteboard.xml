@@ -13,14 +13,20 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="@drawable/img_bg_wood"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/element_spacing_normal">
 
             <view
                 android:id="@+id/make_cakedecoview"
                 class="com.hackm.famiryboard.view.widget.WhiteBoardView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/white" />
+                android:background="@drawable/bg_white"
+                android:elevation="4dp" />
 
             <ImageView
                 android:id="@+id/make_imageview_frame"
@@ -84,18 +90,6 @@
                 android:background="#0fff"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_font_text" />
-
-            <ImageButton
-                android:id="@+id/make_imagebutton_preview"
-                android:layout_width="@dimen/whiteboard_menu_button_width"
-                android:layout_height="@dimen/whiteboard_menu_button_height"
-                android:layout_marginBottom="@dimen/whiteboard_menu_button_padding_vertical"
-                android:layout_marginLeft="@dimen/whiteboard_menu_button_padding_horizontal"
-                android:layout_marginRight="@dimen/whiteboard_menu_button_padding_horizontal"
-                android:layout_marginTop="@dimen/whiteboard_menu_button_padding_vertical"
-                android:background="#0fff"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_make_preview_false" />
 
             <Space
                 android:layout_width="0dp"
