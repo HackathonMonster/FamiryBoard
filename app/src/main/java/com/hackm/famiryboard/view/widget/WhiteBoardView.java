@@ -76,12 +76,7 @@ public class WhiteBoardView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         for (Deco deco : mDecos) {
-            if(deco==null) continue;
-            if (deco instanceof DecoImage) {
-                ((DecoImage) deco).draw(canvas);
-            } else {
-                ((DecoText) deco).draw(canvas);
-            }
+            deco.draw(canvas);
         }
         if (mFocusObjectIndex >= 0 && mFocusObjectIndex < mDecos.size()) {
             drawFrame(canvas, mDecos.get(mFocusObjectIndex));
@@ -124,11 +119,14 @@ public class WhiteBoardView extends View {
                     try {
                         Deco focusDeco = mDecos.get(mFocusObjectIndex);
                         if (focusDeco.getTouchType(touchPoint) == TYPE_DELETE) {
+                            mTextTapListener.onDelete(focusDeco.id);
                             mDecos.remove(mFocusObjectIndex);
                         }
                     } catch (ArrayIndexOutOfBoundsException e) {
                         e.printStackTrace();
                     }
+
+
                 } else if (mTouchType == TYPE_TAP && mDecos.get(mFocusObjectIndex).type == Deco.TYPE_TEXT) {
                     try {
                         DecoText decoText = (DecoText) mDecos.get(mFocusObjectIndex);
@@ -280,6 +278,8 @@ public class WhiteBoardView extends View {
 
     public interface OnTextTapListener {
         public void onTextTaped(FontStyles fontStyles, int index);
+        public void onMoved(Deco deco);
+        public void onDelete(String id);
     }
 
 }

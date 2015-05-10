@@ -16,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
-            android:src="@drawable/img_top_up"
             android:scaleType="fitStart"
             android:adjustViewBounds="true"
             android:alpha="0.9"/>
@@ -25,7 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
-            android:src="@drawable/img_top_down"
             android:scaleType="fitEnd"
             android:adjustViewBounds="true"
             android:alpha="0.9"/>
@@ -62,7 +60,6 @@
                 android:layout_margin="@dimen/top_imageview_cake_padding"
                 android:layout_gravity="center"
                 android:scaleType="fitCenter"
-                android:src="@drawable/img_top_gallery"
                 android:background="@android:color/white"/>
 
             <ImageView

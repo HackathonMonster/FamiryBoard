@@ -51,6 +51,8 @@
     <string name="nav_menu_home">ホーム</string>
     <string name="nav_menu_cart">カート</string>
     <string name="nav_menu_mail">お問い合わせ</string>
+    <string name="nav_menu_calendar">カレンダー</string>s
+    <string name="nav_menu_album">アルバム</string>
     <string name="nav_menu_user">マイページ</string>
     <string name="nav_menu_question">ご利用方法</string>
     <string name="failed_network_text">通信に失敗しました。再度お試しください</string>

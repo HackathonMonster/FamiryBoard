@@ -10,6 +10,8 @@ public class AppConfig {
 	public static final boolean DEBUG = true;
 	public static final boolean REAL_DEVICE = true;
 
+    public static final String BOARD_ID = "2f4723eb-c11f-4f91-82a1-9e7e709026b7";
+
     //Some Activity name
     public static final int ID_ACTIVITY_MAIN = 1001;
     public static final int ID_ACTIVITY_DRAWER = 1002;

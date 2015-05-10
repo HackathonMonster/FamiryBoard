@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.hackm.famiryboard.model.pojo.Cake;
+import com.hackm.famiryboard.model.system.AppConfig;
 import com.hackm.famiryboard.view.adapter.CakeAdapter;
 import com.hackm.famiryboard.R;
 import com.hackm.famiryboard.view.activity.WhiteBoardActivity_;
@@ -91,7 +92,7 @@ public class SelectBoardActivity extends ActionBarActivity implements AdapterVie
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Cake cake = mAdapter.getItem(position);
-        WhiteBoardActivity_.intent(this).mBoardId("2f4723eb-c11f-4f91-82a1-9e7e709026b7").start();
+        WhiteBoardActivity_.intent(this).mBoardId(AppConfig.BOARD_ID).start();
         finish();
     }
 }

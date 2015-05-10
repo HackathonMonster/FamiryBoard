@@ -52,7 +52,6 @@ public class SignalRFragment extends Fragment {
     private static final String EXTRA_PROXY = "extra_signalr_proxy";
     private static final String EXTRA_BOARD_ID = "extra_board_id";
 
-
     private OnUpdateConnectionListener mListener;
     private HubConnection mConnection;
     private HubProxy mProxy;
@@ -121,16 +120,12 @@ public class SignalRFragment extends Fragment {
 
     @Override
     public void onDestroy() {
-        //closeBoard();
-        //mConnection.stop();
+        if (mConnection != null) {
+            closeBoard();
+            mConnection.stop();
+        }
         super.onDestroy();
     }
-
-    public void closeConnection() {
-        closeBoard();
-        mConnection.stop();
-    }
-
 
     @Override
     public void onAttach(Activity activity) {
@@ -296,7 +291,16 @@ public class SignalRFragment extends Fragment {
     }
 
 
-    public void updateItem(String items) {
+    public void updateItem(DecoImage items) {
+        mProxy.invoke("updateItem", mBoardId, items).done(new Action<Void>() {
+            @Override
+            public void run(Void obj) throws Exception {
+                Log.d(TAG, "Updated");
+            }
+        });
+    }
+
+    public void updateItem(DecoText items) {
         mProxy.invoke("updateItem", mBoardId, items).done(new Action<Void>() {
             @Override
             public void run(Void obj) throws Exception {

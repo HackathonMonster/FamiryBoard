@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 import com.hackm.famiryboard.model.enumerate.DrawerMenu;
 import com.hackm.famiryboard.R;
+import com.hackm.famiryboard.view.fragment.ModalImageFragment;
 import com.hackm.famiryboard.view.fragment.NavigationDrawerFragment_;
 import com.hackm.famiryboard.view.fragment.TopFragment_;
 import com.hackm.famiryboard.view.fragment.WebpageFragment_;
@@ -43,9 +44,10 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     @AfterViews
     void onAfterViews() {
         mNavigationDrawerFragment = (NavigationDrawerFragment_) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-
         setActionBarToolbar();
         onDrawerSelected(DrawerMenu.Home);
+
+        ModalImageFragment.newInstance("https://dl.dropboxusercontent.com/u/31455721/news_popup.png").show(getSupportFragmentManager(), ModalImageFragment.class.getSimpleName());
     }
 
     private void setFragment(DrawerMenu drawerMenu) {
@@ -58,7 +60,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
                 transaction.replace(R.id.main_layout_content, fragment);
                 transaction.commit();
             }
-            SelectBoardActivity_.intent(this).start();
         } else {
             Fragment fragment = WebpageFragment_.builder().mPageUrl(drawerMenu.url).build();
             transaction.replace(R.id.main_layout_content, fragment);
