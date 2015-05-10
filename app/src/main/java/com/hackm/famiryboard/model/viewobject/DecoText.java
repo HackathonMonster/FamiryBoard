@@ -43,6 +43,12 @@ public class DecoText extends Deco {
         this.styles = styles;
     }
 
+    public DecoText(String id, int x, int y, int width, int height, int rotation, int type, String boardId, FontStyles fontStyles) {
+        super(x, y, width, height, rotation, type, boardId);
+        this.styles = fontStyles;
+        this.id = id;
+    }
+
     public static Bitmap createBitmap(float width, float height, FontStyles fontStyles) {
         Bitmap bitmap = Bitmap.createBitmap((int) width, (int) height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);

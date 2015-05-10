@@ -125,8 +125,6 @@ public class WhiteBoardView extends View {
                     } catch (ArrayIndexOutOfBoundsException e) {
                         e.printStackTrace();
                     }
-
-
                 } else if (mTouchType == TYPE_TAP && mDecos.get(mFocusObjectIndex).type == Deco.TYPE_TEXT) {
                     try {
                         DecoText decoText = (DecoText) mDecos.get(mFocusObjectIndex);
@@ -136,6 +134,12 @@ public class WhiteBoardView extends View {
                     } catch (ClassCastException e) {
                         //何もしない
                         mDecos.get(mFocusObjectIndex).type = Deco.TYPE_CAMERA;
+                    }
+                } else if (mTouchType == TYPE_MOVE || mTouchType == TYPE_CHANGE) {
+                    try {
+                        mTextTapListener.onMoved(mDecos.get(mFocusObjectIndex));
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        e.printStackTrace();
                     }
                 }
                 //タッチのタイプを初期化する
@@ -266,6 +270,23 @@ public class WhiteBoardView extends View {
     public void removeFrame() {
         mFocusObjectIndex = -1;
         invalidate();
+    }
+
+    public void updateItems(Deco deco) {
+        for (int i = 0; i < mDecos.size(); i++) {
+            if (mDecos.get(i).id == deco.id) {
+                deco.bitmap = mDecos.get(i).bitmap;
+                mDecos.set(i, deco);
+            }
+        }
+    }
+
+    public void deleteItems(String id) {
+        for (int i = 0; i < mDecos.size(); i++) {
+            if (mDecos.get(i).id == id) {
+                mDecos.remove(i);
+            }
+        }
     }
 
     public int getDecosCount() {

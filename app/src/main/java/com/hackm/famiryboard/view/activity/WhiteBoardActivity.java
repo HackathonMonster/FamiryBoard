@@ -120,7 +120,6 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                 }
             }
             @Override
@@ -195,7 +194,6 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
             return;
         }
         if (!mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(true);
-        mShareButton.setImageResource(R.drawable.ic_make_preview_true);
         mShareButton.setEnabled(false);
         mCakeDevoView.removeFrame();
         //背景を白く設定
@@ -401,6 +399,7 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
             JSONObject jsonObject = new JSONObject(json);
             if (jsonObject.getInt("type") != Deco.TYPE_TEXT) {
                 final DecoImage decoImage = new DecoImage(
+                        jsonObject.getString("id"),
                         jsonObject.getInt("x"),
                         jsonObject.getInt("y"),
                         jsonObject.getInt("width"),
@@ -427,6 +426,7 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
                 fontStyles.style = fontStyleObject.getInt("style");
                 fontStyles.typefacePath = fontStyleObject.getString("typefacePath");
                 final DecoText decoText = new DecoText(
+                        jsonObject.getString("id"),
                         jsonObject.getInt("x"),
                         jsonObject.getInt("y"),
                         jsonObject.getInt("width"),
@@ -436,7 +436,6 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
                         jsonObject.getString("boardId"),
                         fontStyles);
                 decoText.bitmap = DecoText.createBitmap(decoText.width, decoText.height, decoText.styles);
-
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -451,6 +450,9 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
             }
         } catch (JSONException e) {
             e.printStackTrace();
+            if (mProgressLayout.isRefreshing()) mProgressLayout.setRefreshing(false);
+            MessageDialogFragment messageDialogFragment = MessageDialogFragment.newInstance("通信に失敗しました", "時間をおいて再度お試しください");
+            messageDialogFragment.show(getFragmentManager(), AppConfig.TAG_MESSAGE_DIALOG);
         }
     }
 
@@ -475,12 +477,67 @@ public class WhiteBoardActivity extends Activity implements TextDecoDialogFragme
 
     @Override
     public void onUpdateItem(String json) {
-        //TODO
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            if (jsonObject.getInt("type") != Deco.TYPE_TEXT) {
+                final DecoImage decoImage = new DecoImage(
+                        jsonObject.getString("id"),
+                        jsonObject.getInt("x"),
+                        jsonObject.getInt("y"),
+                        jsonObject.getInt("width"),
+                        jsonObject.getInt("height"),
+                        jsonObject.getInt("rotation"),
+                        jsonObject.getInt("type"),
+                        jsonObject.getString("imageUrl"),
+                        jsonObject.getString("boardId"));
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mCakeDevoView.updateItems(decoImage);
+                    }
+                });
+            } else {
+                JSONObject fontStyleObject = jsonObject.getJSONObject("styles");
+                FontStyles fontStyles = new FontStyles(fontStyleObject.getString("text"));
+                fontStyles.color = fontStyleObject.getInt("color");
+                fontStyles.size = fontStyleObject.getInt("size");
+                fontStyles.gravity = fontStyleObject.getInt("gravity");
+                fontStyles.style = fontStyleObject.getInt("style");
+                fontStyles.typefacePath = fontStyleObject.getString("typefacePath");
+                final DecoText decoText = new DecoText(
+                        jsonObject.getString("id"),
+                        jsonObject.getInt("x"),
+                        jsonObject.getInt("y"),
+                        jsonObject.getInt("width"),
+                        jsonObject.getInt("height"),
+                        jsonObject.getInt("rotation"),
+                        jsonObject.getInt("type"),
+                        jsonObject.getString("boardId"),
+                        fontStyles);
+                decoText.bitmap = DecoText.createBitmap(decoText.width, decoText.height, decoText.styles);
+
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mCakeDevoView.updateItems(decoText);
+                    }
+                });
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
-    public void onDeleteItem(String id) {
+    public void onDeleteItem(final String id) {
         //TODO
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                mCakeDevoView.deleteItems(id);
+            }
+        });
     }
 
     @Override

@@ -10,7 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_cake_plain"
-        android:textColor="@color/primary_text"
+        android:textColor="@color/primary_text_inverse"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:layout_marginRight="@dimen/stamp_category_vertical_margin"

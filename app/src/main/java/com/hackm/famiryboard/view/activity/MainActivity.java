@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 import com.hackm.famiryboard.model.enumerate.DrawerMenu;
 import com.hackm.famiryboard.R;
+import com.hackm.famiryboard.view.fragment.AlbumFragment_;
 import com.hackm.famiryboard.view.fragment.ModalImageFragment;
 import com.hackm.famiryboard.view.fragment.NavigationDrawerFragment_;
 import com.hackm.famiryboard.view.fragment.TopFragment_;
@@ -39,7 +40,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     Toolbar mActionBarToolbar;
     @ViewById(R.id.main_drawer_layout)
     DrawerLayout mDrawerLayout;
-    private NavigationDrawerFragment_  mNavigationDrawerFragment;
+    private NavigationDrawerFragment_ mNavigationDrawerFragment;
 
     @AfterViews
     void onAfterViews() {
@@ -60,6 +61,10 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
                 transaction.replace(R.id.main_layout_content, fragment);
                 transaction.commit();
             }
+        } else if (drawerMenu == DrawerMenu.Album) {
+            Fragment fragment = AlbumFragment_.builder().build();
+            transaction.replace(R.id.main_layout_content, fragment);
+            transaction.commit();
         } else {
             Fragment fragment = WebpageFragment_.builder().mPageUrl(drawerMenu.url).build();
             transaction.replace(R.id.main_layout_content, fragment);

@@ -7,7 +7,7 @@ public class AppConfig {
 	}
 
 	//デバッグ常態化どうかのフラグ
-	public static final boolean DEBUG = true;
+	public static final boolean DEBUG = false;
 	public static final boolean REAL_DEVICE = true;
 
     public static final String BOARD_ID = "2f4723eb-c11f-4f91-82a1-9e7e709026b7";

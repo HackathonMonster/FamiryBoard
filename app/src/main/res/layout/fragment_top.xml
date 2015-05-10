@@ -31,7 +31,8 @@
             android:adjustViewBounds="true"
             android:elevation="4dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/img_card_whiteboard" />
+            android:src="@drawable/img_card_whiteboard"
+            android:layout_marginTop="@dimen/element_spacing_large"/>
 
         <ImageView
             android:id="@+id/top_imageview_album"
@@ -41,17 +42,8 @@
             android:adjustViewBounds="true"
             android:elevation="4dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/img_card_album" />
-
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_top_white"
-            android:rowCount="4"
-            android:visibility="gone">
-
-
-        </GridLayout>
+            android:src="@drawable/img_card_album"
+            android:layout_marginTop="@dimen/element_spacing_large"/>
 
         <CalendarView
             android:id="@+id/calendarView"

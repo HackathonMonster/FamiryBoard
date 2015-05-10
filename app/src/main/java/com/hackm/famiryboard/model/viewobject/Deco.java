@@ -33,6 +33,10 @@ public class Deco {
     public transient Bitmap bitmap;
     private transient Paint paint = null;
 
+    public Deco() {
+
+    }
+
     public Deco(Bitmap bitmap, float x, float y, float width, float height, int rotation, int type, String boardId) {
         this.bitmap = bitmap;
         this.x = x;

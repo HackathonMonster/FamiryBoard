@@ -40,6 +40,9 @@
     <!-- Splash -->
     <dimen name="splash_imageview_size">160dp</dimen>
     <dimen name="splash_imageview_top_margin">64dp</dimen>
+    <!-- Start -->
+    <dimen name="start_button_bottom_margin">36dp</dimen>
+
     <!-- Top -->
     <dimen name="top_imageview_cake_size">216dp</dimen>
     <dimen name="top_imageview_cake_padding">44dp</dimen><!--All:Print 12:7-->

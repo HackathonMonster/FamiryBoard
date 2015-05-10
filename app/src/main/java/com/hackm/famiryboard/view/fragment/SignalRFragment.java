@@ -111,7 +111,6 @@ public class SignalRFragment extends Fragment {
                         if (mListener != null) {
                             mListener.onConnectionStarted();
                         }
-                        //TODO 接続したタイミングでボードを開く
                         openBoard();
                     }
                 });
@@ -121,8 +120,12 @@ public class SignalRFragment extends Fragment {
     @Override
     public void onDestroy() {
         if (mConnection != null) {
-            closeBoard();
-            mConnection.stop();
+            try {
+                closeBoard();
+                mConnection.stop();
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
         }
         super.onDestroy();
     }

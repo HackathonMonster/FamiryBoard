@@ -35,8 +35,19 @@ public class SplashActivity extends ActionBarActivity {
         if (Account.isAccount(getApplicationContext())) {
             onGetTokenRequest();
         } else {
-            StartActivity_.intent(mContext).start();
-            finish();
+            Timer timer = new Timer(false);
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            StartActivity_.intent(mContext).start();
+                            finish();
+                        }
+                    });
+                }
+            }, 500);
         }
     }
 

@@ -31,6 +31,12 @@ public class UriUtil {
         return builder.build().toString();
     }
 
+    static public String getImagesUrl() {
+        Uri.Builder builder = getBaseUri();
+        builder.path("/api/images");
+        return builder.build().toString();
+    }
+
     static public String getItemsUrl(String boardId) {
         Uri.Builder builder = getBaseUri();
         builder.path("/api/items");
@@ -72,5 +78,7 @@ public class UriUtil {
         builder.path("/api/stamps/"+categoryId+".json");
         return builder.build().toString();
     }
+
+
 
 }

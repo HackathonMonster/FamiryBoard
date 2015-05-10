@@ -40,4 +40,10 @@ public class DecoImage extends Deco {
         super(x, y, width, height, rotation, type, boardId);
         this.imageUrl = imageUrl;
     }
+
+    public DecoImage(String id, int x, int y, int width, int height, int rotation, int type, String imageUrl, String boardId) {
+        super(x, y, width, height, rotation, type, boardId);
+        this.imageUrl = imageUrl;
+        this.id = id;
+    }
 }

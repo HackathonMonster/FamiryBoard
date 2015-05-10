@@ -12,6 +12,7 @@ public enum NetworkTasks {
 	PostLogin(5, Request.Method.POST),
 	PostRegistFamiry(6, Request.Method.POST),
 	GetBoardItems(7, Request.Method.GET),
+	GetAlbums(8, Request.Method.GET),
 	;
 	public int id;
 	//Request
